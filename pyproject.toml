@@ -20,7 +20,7 @@ pytest = "<9.0"
 line-length = 101
 
 [tool.ruff.lint]
-exclude = ["test/*"]
+exclude = ["test/*", "generate/*"]
 select = ["ALL"]
 ignore = [
     "COM812",  # conflicts with ruff formatter
@@ -35,6 +35,8 @@ ignore = [
     "N802",    # interferes with setting constant abstract properties
 
     "PGH003",  # necessary for _QuantityBase.__eq__()
+
+    "PLR0913", # many arguments are necessary for the quantities to enable enough different units
 
     "RUF012",  # does not work with constants
 
