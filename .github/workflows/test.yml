@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  test:
+    name: Test with Python ${{matrix.python_version}} on ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python_version:
+          - "3.8"
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
+
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        
+        - name: Install Poetry
+          run: |
+            curl -sSL https://install.python-poetry.org | python3 -
+            echo "$HOME/.local/bin" >> $GITHUB_PATH
+          shell: bash
+
+        - name: Configure Poetry to use virtual environment inside the project
+          run: poetry config virtualenvs.in-project true
+
+        - name: Install dependencies
+          run: poetry install
+
+        - name: Run Tests
+          run: poetry run pytest
