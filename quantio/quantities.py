@@ -9,7 +9,6 @@ from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 class Length(_QuantityBase):
     """The one-dimensional extent of an object or the distance between two points."""
 
-    _base_value: float
     unit_conversion: ClassVar[dict[str, float]] = {
         "miles": 1609.34,
         "kilometers": 10**3,
@@ -60,12 +59,6 @@ class Length(_QuantityBase):
     def micrometers(self) -> float:
         """The length in micrometers."""
         return self._base_value / self.unit_conversion["micrometers"]
-
-    def __eq__(self, other: object) -> bool:
-        """Assess if this length is the same as another."""
-        if not isinstance(other, Length):
-            return False
-        return self._base_value == other._base_value
 
     def __add__(self, other: Length) -> Length:
         """Add two lengths together."""

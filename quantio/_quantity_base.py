@@ -18,5 +18,12 @@ class _QuantityBase(ABC):
         """Construct this class with the used units."""
         self._base_value = 0.0
 
-        for unit, factor in self.unit_conversion.items():
-            self._base_value += kwargs.get(unit, 0.0) * factor
+        for unit_name, factor in self.unit_conversion.items():
+            self._base_value += kwargs.get(unit_name, 0.0) * factor
+
+    def __eq__(self, other: object) -> bool:
+        """Assess if this object is the same as another."""
+        if type(self) is not type(other):
+            return False
+
+        return self._base_value == other._base_value  # type: ignore
