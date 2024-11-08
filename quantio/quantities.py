@@ -2,14 +2,15 @@ from __future__ import annotations
 
 from typing import ClassVar
 
+from ._quantity_base import _QuantityBase
 from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 
 
-class Length:
+class Length(_QuantityBase):
     """The one-dimensional extent of an object or the distance between two points."""
 
-    _meters: float
-    UNIT_CONVERSION: ClassVar[dict[str, float]] = {
+    _base_value: float
+    unit_conversion: ClassVar[dict[str, float]] = {
         "miles": 1609.34,
         "kilometers": 10**3,
         "meters": 10**0,
@@ -20,73 +21,60 @@ class Length:
         "micrometers": 10**-6,
     }
 
-    def __init__(self, **kwargs: float) -> None:
-        """Construct this class with the used units."""
-        self._meters = (
-            kwargs.get("miles", 0.0) * self.UNIT_CONVERSION["miles"]
-            + kwargs.get("kilometers", 0.0) * self.UNIT_CONVERSION["kilometers"]
-            + kwargs.get("meters", 0.0) * self.UNIT_CONVERSION["meters"]
-            + kwargs.get("feet", 0.0) * self.UNIT_CONVERSION["feet"]
-            + kwargs.get("inches", 0.0) * self.UNIT_CONVERSION["inches"]
-            + kwargs.get("centimeters", 0.0) * self.UNIT_CONVERSION["centimeters"]
-            + kwargs.get("millimeters", 0.0) * self.UNIT_CONVERSION["millimeters"]
-            + kwargs.get("micrometers", 0.0) * self.UNIT_CONVERSION["micrometers"]
-        )
-
     @property
     def miles(self) -> float:
         """The length in miles."""
-        return self._meters / self.UNIT_CONVERSION["miles"]
+        return self._base_value / self.unit_conversion["miles"]
 
     @property
     def kilometers(self) -> float:
         """The length in kilometers."""
-        return self._meters / self.UNIT_CONVERSION["kilometers"]
+        return self._base_value / self.unit_conversion["kilometers"]
 
     @property
     def meters(self) -> float:
         """The length in meters."""
-        return self._meters / self.UNIT_CONVERSION["meters"]
+        return self._base_value / self.unit_conversion["meters"]
 
     @property
     def feet(self) -> float:
         """The length in feet."""
-        return self._meters / self.UNIT_CONVERSION["feet"]
+        return self._base_value / self.unit_conversion["feet"]
 
     @property
     def inches(self) -> float:
         """The length in inches."""
-        return self._meters / self.UNIT_CONVERSION["inches"]
+        return self._base_value / self.unit_conversion["inches"]
 
     @property
     def centimeters(self) -> float:
         """The length in centimeters."""
-        return self._meters / self.UNIT_CONVERSION["centimeters"]
+        return self._base_value / self.unit_conversion["centimeters"]
 
     @property
     def millimeters(self) -> float:
         """The length in millimeters."""
-        return self._meters / self.UNIT_CONVERSION["millimeters"]
+        return self._base_value / self.unit_conversion["millimeters"]
 
     @property
     def micrometers(self) -> float:
         """The length in micrometers."""
-        return self._meters / self.UNIT_CONVERSION["micrometers"]
+        return self._base_value / self.unit_conversion["micrometers"]
 
     def __eq__(self, other: object) -> bool:
         """Assess if this length is the same as another."""
         if not isinstance(other, Length):
             return False
-        return self._meters == other._meters
+        return self._base_value == other._base_value
 
     def __add__(self, other: Length) -> Length:
         """Add two lengths together."""
         if not isinstance(other, Length):
             raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
-        return Length(meters=self._meters + other._meters)
+        return Length(meters=self._base_value + other._base_value)
 
     def __sub__(self, other: Length) -> Length:
         """Add two lengths together."""
         if not isinstance(other, Length):
             raise CanNotSubtractTypesError(self.__class__.__name__, other.__class__.__name__)
-        return Length(meters=self._meters - other._meters)
+        return Length(meters=self._base_value - other._base_value)
