@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from .exceptions import CanNotAddTypesError
+from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 
 
 class _QuantityBase(ABC):
@@ -31,7 +31,13 @@ class _QuantityBase(ABC):
         return self._base_value == other._base_value  # type: ignore
 
     def __add__(self, other: _QuantityBase) -> _QuantityBase:
-        """Add two lengths together."""
+        """Add two quantities of the same type."""
         if type(self) is not type(other):
             raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
         return type(self)(_base_value=self._base_value + other._base_value)
+
+    def __sub__(self, other: _QuantityBase) -> _QuantityBase:
+        """Subtract two quantities of the same type."""
+        if type(self) is not type(other):
+            raise CanNotSubtractTypesError(self.__class__.__name__, other.__class__.__name__)
+        return type(self)(_base_value=self._base_value - other._base_value)
