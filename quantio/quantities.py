@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import ClassVar
 
 from ._quantity_base import _QuantityBase
-from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
+from .exceptions import CanNotSubtractTypesError
 
 
 class Length(_QuantityBase):
@@ -59,12 +59,6 @@ class Length(_QuantityBase):
     def micrometers(self) -> float:
         """The length in micrometers."""
         return self._base_value / self.unit_conversion["micrometers"]
-
-    def __add__(self, other: Length) -> Length:
-        """Add two lengths together."""
-        if not isinstance(other, Length):
-            raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
-        return Length(meters=self._base_value + other._base_value)
 
     def __sub__(self, other: Length) -> Length:
         """Add two lengths together."""
