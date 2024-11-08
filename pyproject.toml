@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "quantio"
-version = "${PACKAGE_VERSION}"
+version = "0.2.0"
 description = "Type hinting and safe unit conversion for physical quantities in Python."
 authors = []
 readme = "README.md"
@@ -52,6 +52,3 @@ disable_error_code = ["call-arg"]
 [tool.pytest.ini_options]
 testpaths = ["test"]
 xfail_strict = true
-
-[tool.poetry-dynamic-versioning]
-enable = true
