@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import ClassVar
 
-from .exceptions import CanNotAddTypesError
+from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 
 
 class Length:
@@ -84,3 +84,9 @@ class Length:
         if not isinstance(other, Length):
             raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
         return Length(meters=self._meters + other._meters)
+
+    def __sub__(self, other: Length) -> Length:
+        """Add two lengths together."""
+        if not isinstance(other, Length):
+            raise CanNotSubtractTypesError(self.__class__.__name__, other.__class__.__name__)
+        return Length(meters=self._meters - other._meters)
