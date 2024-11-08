@@ -1,6 +1,6 @@
 import pytest
 
-from quantio import Length
+from quantio import Length, CanNotAddTypesError
 
 
 def test_construction__multiple_units():
@@ -46,6 +46,21 @@ def test_millimeters():
 def test_micrometers():
     actual = Length(micrometers=1)
     assert actual.micrometers == 1
+
+
+def test_add__success():
+    length1 = Length(meters=1)
+    length2 = Length(meters=2)
+
+    actual = length1 + length2
+    assert actual == Length(meters=3)
+
+
+def test_add__false_class():
+    length = Length(meters=1)
+
+    with pytest.raises(CanNotAddTypesError):
+        length += 1
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import ClassVar
 
+from .exceptions import CanNotAddTypesError
+
 
 class Length:
     """The one-dimensional extent of an object or the distance between two points."""
@@ -70,3 +72,15 @@ class Length:
     def micrometers(self) -> float:
         """The length in micrometers."""
         return self._meters / self.UNIT_CONVERSION["micrometers"]
+
+    def __eq__(self, other: object) -> bool:
+        """Assess if this length is the same as another."""
+        if not isinstance(other, Length):
+            return False
+        return self._meters == other._meters
+
+    def __add__(self, other: Length) -> Length:
+        """Add two lengths together."""
+        if not isinstance(other, Length):
+            raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
+        return Length(meters=self._meters + other._meters)
