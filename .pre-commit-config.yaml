@@ -28,7 +28,7 @@ repos:
       name: Run Type Checker
       types_or: [python, pyi, toml, yaml]
       pass_filenames: false
-      args: [nastran_to_kratos]
+      args: [quantio]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.7.0
@@ -39,16 +39,16 @@ repos:
       - id: ruff-format
         name: Run Formatter
           
-  # - repo: local TODO: reactivate once tests exist
-  #   hooks:
-  #   - id: pytest
-  #     name: Run Unit Tests
-  #     stages: [commit]
-  #     types: [python]
-  #     entry: ./.venv/bin/pytest
-  #     language: system
-  #     pass_filenames: false
-  #     always_run: true
+  - repo: local
+    hooks:
+    - id: pytest
+      name: Run Unit Tests
+      stages: [commit]
+      types: [python]
+      entry: ./.venv/bin/pytest
+      language: system
+      pass_filenames: false
+      always_run: true
 
   - repo: https://github.com/qoomon/git-conventional-commits
     rev: v2.6.7
