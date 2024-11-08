@@ -8,9 +8,14 @@ def test_construction__multiple_units():
     assert actual.meters == 1005.07
 
 
-def test_kilometers():
+def test_miles():
     actual = Length(meters=1)
-    assert actual.kilometers == 10**-3
+    assert actual.miles == 1 / 1609.34
+
+
+def test_kilometers():
+    actual = Length(kilometers=1)
+    assert actual.kilometers == 1
 
 
 def test_meters():
@@ -18,19 +23,29 @@ def test_meters():
     assert actual.meters == 1
 
 
+def test_feet():
+    actual = Length(feet=1)
+    assert actual.feet == 1
+
+
+def test_inches():
+    actual = Length(inches=1)
+    assert actual.inches == 1
+
+
 def test_centimeters():
-    actual = Length(meters=1)
-    assert actual.centimeters == 10**2
+    actual = Length(centimeters=1)
+    assert actual.centimeters == 1
 
 
 def test_millimeters():
-    actual = Length(meters=1)
-    assert actual.millimeters == 10**3
+    actual = Length(millimeters=1)
+    assert actual.millimeters == 1
 
 
 def test_micrometers():
-    actual = Length(meters=1)
-    assert actual.micrometers == 10**6
+    actual = Length(micrometers=1)
+    assert actual.micrometers == 1
 
 
 if __name__ == "__main__":

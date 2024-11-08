@@ -8,8 +8,11 @@ class Length:
 
     _meters: float
     UNIT_CONVERSION: ClassVar[dict[str, float]] = {
+        "miles": 1609.34,
         "kilometers": 10**3,
         "meters": 10**0,
+        "feet": 0.3048,
+        "inches": 0.0254,
         "centimeters": 10**-2,
         "millimeters": 10**-3,
         "micrometers": 10**-6,
@@ -18,12 +21,20 @@ class Length:
     def __init__(self, **kwargs: float) -> None:
         """Construct this class with the used units."""
         self._meters = (
-            kwargs.get("kilometers", 0.0) * self.UNIT_CONVERSION["kilometers"]
+            kwargs.get("miles", 0.0) * self.UNIT_CONVERSION["miles"]
+            + kwargs.get("kilometers", 0.0) * self.UNIT_CONVERSION["kilometers"]
             + kwargs.get("meters", 0.0) * self.UNIT_CONVERSION["meters"]
+            + kwargs.get("feet", 0.0) * self.UNIT_CONVERSION["feet"]
+            + kwargs.get("inches", 0.0) * self.UNIT_CONVERSION["inches"]
             + kwargs.get("centimeters", 0.0) * self.UNIT_CONVERSION["centimeters"]
             + kwargs.get("millimeters", 0.0) * self.UNIT_CONVERSION["millimeters"]
             + kwargs.get("micrometers", 0.0) * self.UNIT_CONVERSION["micrometers"]
         )
+
+    @property
+    def miles(self) -> float:
+        """The length in miles."""
+        return self._meters / self.UNIT_CONVERSION["miles"]
 
     @property
     def kilometers(self) -> float:
@@ -34,6 +45,16 @@ class Length:
     def meters(self) -> float:
         """The length in meters."""
         return self._meters / self.UNIT_CONVERSION["meters"]
+
+    @property
+    def feet(self) -> float:
+        """The length in feet."""
+        return self._meters / self.UNIT_CONVERSION["feet"]
+
+    @property
+    def inches(self) -> float:
+        """The length in inches."""
+        return self._meters / self.UNIT_CONVERSION["inches"]
 
     @property
     def centimeters(self) -> float:
