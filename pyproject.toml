@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "quantio"
+version = "0.1.0"
+description = "Type hinting and safe unit conversion for physical quantities in Python."
+authors = []
+readme = "README.md"
+repository = "https://github.com/unexcellent/quantio"
+
+[tool.poetry.dependencies]
+python = "^3.12, <4.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy-extensions = "<2.0"
+ruff = "<1.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "<9.0"
+
+[tool.ruff]
+line-length = 101
+
+[tool.ruff.lint]
+exclude = ["test/*"]
+select = ["ALL"]
+ignore = [
+    "COM812",  # conflicts with ruff formatter
+
+    "D100",    # imo no docstrings are necessary in public modules
+    "D107",    # __init__ docstrings are not necessary
+    "D203",    # incompatible with D211
+    "D213",    # incompatible with D212
+
+    "ISC001",  # conflicts with ruff formatter
+
+    "TCH001",  # adds hard to understand compexity without providing a benefit for smaller projects
+    "TCH002",  # same as TCH001
+    "TCH003",  # same as TCH001
+
+    "SIM103",  # less readable in some cases imo
+]
+
+[tool.mypy]
+check_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unreachable = true
+python_version = "3.12"
+ignore_missing_imports = true
+disable_error_code = ["call-arg"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+xfail_strict = true
+
+[tool.poetry-dynamic-versioning]
+enable = true
