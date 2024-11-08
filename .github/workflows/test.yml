@@ -25,6 +25,9 @@ jobs:
             python_version: "3.13"
 
     steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        
         - name: Install Poetry
           run: |
             curl -sSL https://install.python-poetry.org | python3 -
