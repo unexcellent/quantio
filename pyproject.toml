@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "quantio"
-version = "0.1.0-beta"
+version = "${PACKAGE_VERSION}"
 description = "Type hinting and safe unit conversion for physical quantities in Python."
 authors = []
 readme = "README.md"
