@@ -1,46 +1,46 @@
 import pytest
 
-from quantio import Length, CanNotAddTypesError, CanNotSubtractTypesError
+from quantio import Length
 
 
 def test_miles():
-    actual = Length(meters=1)
-    assert actual.miles == 1 / 1609.34
+    length = Length(meters=1)
+    assert length.miles == 1 / 1609.34
 
 
 def test_kilometers():
-    actual = Length(kilometers=1)
-    assert actual.kilometers == 1
+    length = Length(kilometers=1)
+    assert length.kilometers == 1
 
 
 def test_meters():
-    actual = Length(meters=1)
-    assert actual.meters == 1
+    length = Length(meters=1)
+    assert length.meters == 1
 
 
 def test_feet():
-    actual = Length(feet=1)
-    assert actual.feet == 1
+    length = Length(feet=1)
+    assert length.feet == 1
 
 
 def test_inches():
-    actual = Length(inches=1)
-    assert actual.inches == 1
+    length = Length(inches=1)
+    assert length.inches == 1
 
 
 def test_centimeters():
-    actual = Length(centimeters=1)
-    assert actual.centimeters == 1
+    length = Length(centimeters=1)
+    assert length.centimeters == 1
 
 
 def test_millimeters():
-    actual = Length(millimeters=1)
-    assert actual.millimeters == 1
+    length = Length(millimeters=1)
+    assert length.millimeters == 1
 
 
 def test_micrometers():
-    actual = Length(micrometers=1)
-    assert actual.micrometers == 1
+    length = Length(micrometers=1)
+    assert length.micrometers == 1
 
 
 if __name__ == "__main__":

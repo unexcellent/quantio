@@ -58,3 +58,34 @@ class Length(_QuantityBase):
     def micrometers(self) -> float:
         """The length in micrometers."""
         return self._base_value / self.unit_conversion["micrometers"]
+
+
+class Time(_QuantityBase):
+    """The duration of an event."""
+
+    unit_conversion: ClassVar[dict[str, float]] = {
+        "hours": 60 * 60,
+        "minutes": 60,
+        "seconds": 1,
+        "milliseconds": 10**-3,
+    }
+
+    @property
+    def hours(self) -> float:
+        """The time in hours."""
+        return self._base_value / self.unit_conversion["hours"]
+
+    @property
+    def minutes(self) -> float:
+        """The time in minutes."""
+        return self._base_value / self.unit_conversion["minutes"]
+
+    @property
+    def seconds(self) -> float:
+        """The time in seconds."""
+        return self._base_value / self.unit_conversion["seconds"]
+
+    @property
+    def milliseconds(self) -> float:
+        """The time in milliseconds."""
+        return self._base_value / self.unit_conversion["milliseconds"]
