@@ -1,5 +1,6 @@
 """The main quantio package."""
 
-from .quantities import Length
+from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
+from .quantities import Length, Time
 
-__all__ = ["Length"]
+__all__ = ["Length", "Time", "CanNotAddTypesError", "CanNotSubtractTypesError"]
