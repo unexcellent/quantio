@@ -168,6 +168,68 @@ class Length(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Mass(_QuantityBase):
+    """A measure of resistance to acceleration."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    def __init__(
+        self,
+        tonnes: float = 0.0,
+        kilograms: float = 0.0,
+        pounds: float = 0.0,
+        ounces: float = 0.0,
+        grams: float = 0.0,
+        milligrams: float = 0.0,
+        micrograms: float = 0.0,
+    ) -> None:
+        self._base_value = 0.0
+        self._base_value += tonnes * 10**3
+        self._base_value += kilograms * 1
+        self._base_value += pounds * (1 / 2.20462)
+        self._base_value += ounces * (1 / 35.27396)
+        self._base_value += grams * 10**-3
+        self._base_value += milligrams * 10**-6
+        self._base_value += micrograms * 10**-9
+
+    @property
+    def tonnes(self) -> float:
+        """The mass in tonnes."""
+        return self._base_value / 10**3
+
+    @property
+    def kilograms(self) -> float:
+        """The mass in kilograms."""
+        return self._base_value / 1
+
+    @property
+    def pounds(self) -> float:
+        """The mass in pounds."""
+        return self._base_value / (1 / 2.20462)
+
+    @property
+    def ounces(self) -> float:
+        """The mass in ounces."""
+        return self._base_value / (1 / 35.27396)
+
+    @property
+    def grams(self) -> float:
+        """The mass in grams."""
+        return self._base_value / 10**-3
+
+    @property
+    def milligrams(self) -> float:
+        """The mass in milligrams."""
+        return self._base_value / 10**-6
+
+    @property
+    def micrograms(self) -> float:
+        """The mass in micrograms."""
+        return self._base_value / 10**-9
+
+    # --- End of auto generated part. ---
+
+
 class Velocity(_QuantityBase):
     """Distance per time."""
 

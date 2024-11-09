@@ -99,6 +99,15 @@ if __name__ == "__main__":
             "millimeters": "10**-3",
             "micrometers": "10**-6",
         },
+        "Mass": {
+            "tonnes": "10**3",
+            "kilograms": "1",
+            "pounds": "(1 / 2.20462)",
+            "ounces": "(1 / 35.27396)",
+            "grams": "10**-3",
+            "milligrams": "10**-6",
+            "micrograms": "10**-9",
+        },
         "Velocity": {
             "meters_per_second": "1",
             "kilometers_per_hour": "(1 / 3.6)",
