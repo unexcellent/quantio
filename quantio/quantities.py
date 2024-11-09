@@ -139,6 +139,39 @@ class Length(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Velocity(_QuantityBase):
+    """Distance per time."""
+
+    # --- This part is auto generated. Do not change manually. ---
+    def __init__(
+        self,
+        meters_per_second: float = 0.0,
+        kilometers_per_hour: float = 0.0,
+        miles_per_hour: float = 0.0,
+    ) -> None:
+        self._base_value = 0.0
+        self._base_value += meters_per_second * 10**0
+        self._base_value += kilometers_per_hour * (1 / 3.6)
+        self._base_value += miles_per_hour * (1 / 2.23694)
+
+    @property
+    def meters_per_second(self) -> float:
+        """The velocity in meters per second."""
+        return self._base_value / 10**0
+
+    @property
+    def kilometers_per_hour(self) -> float:
+        """The velocity in kilometers per hour."""
+        return self._base_value / (1 / 3.6)
+
+    @property
+    def miles_per_hour(self) -> float:
+        """The velocity in miles per hour."""
+        return self._base_value / (1 / 2.23694)
+
+    # --- End of auto generated part. ---
+
+
 class Time(_QuantityBase):
     """The duration of an event."""
 

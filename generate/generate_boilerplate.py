@@ -94,6 +94,11 @@ if __name__ == "__main__":
             "millimeters": "10**-3",
             "micrometers": "10**-6",
         },
+        "Velocity": {
+            "meters_per_second": "10**0",
+            "kilometers_per_hour": "(1 / 3.6)",
+            "miles_per_hour": "(1 / 2.23694)",
+        },
         "Time": {
             "hours": "60 * 60",
             "minutes": "60",
