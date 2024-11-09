@@ -3,6 +3,33 @@ from __future__ import annotations
 from ._quantity_base import _QuantityBase
 
 
+class Acceleration(_QuantityBase):
+    """Rate of change of velocity."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    def __init__(
+        self,
+        meters_per_square_second: float = 0.0,
+        g_force: float = 0.0,
+    ) -> None:
+        self._base_value = 0.0
+        self._base_value += meters_per_square_second * 1
+        self._base_value += g_force * (1 / 9.8)
+
+    @property
+    def meters_per_square_second(self) -> float:
+        """The acceleration in meters per square second."""
+        return self._base_value / 1
+
+    @property
+    def g_force(self) -> float:
+        """The acceleration in g force."""
+        return self._base_value / (1 / 9.8)
+
+    # --- End of auto generated part. ---
+
+
 class Area(_QuantityBase):
     """The two-dimensional extent of an object."""
 

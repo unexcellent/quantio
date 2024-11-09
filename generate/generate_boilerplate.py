@@ -75,6 +75,10 @@ def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]
 
 if __name__ == "__main__":
     quantities_with_fields = {
+        "Acceleration": {
+            "meters_per_square_second": "1",
+            "g_force": "(1 / 9.8)",
+        },
         "Area": {
             "square_miles": "1609.34**2",
             "square_kilometers": "10 ** (3 * 2)",
