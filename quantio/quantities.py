@@ -7,6 +7,7 @@ class Area(_QuantityBase):
     """The two-dimensional extent of an object."""
 
     # --- This part is auto generated. Do not change manually. ---
+
     def __init__(
         self,
         square_miles: float = 0.0,
@@ -21,7 +22,7 @@ class Area(_QuantityBase):
         self._base_value = 0.0
         self._base_value += square_miles * 1609.34**2
         self._base_value += square_kilometers * 10 ** (3 * 2)
-        self._base_value += square_meters * 10**0
+        self._base_value += square_meters * 1
         self._base_value += square_feet * 0.3048**2
         self._base_value += square_inches * 0.0254**2
         self._base_value += square_centimeters * 10 ** (-2 * 2)
@@ -41,7 +42,7 @@ class Area(_QuantityBase):
     @property
     def square_meters(self) -> float:
         """The area in square meters."""
-        return self._base_value / 10**0
+        return self._base_value / 1
 
     @property
     def square_feet(self) -> float:
@@ -75,6 +76,7 @@ class Length(_QuantityBase):
     """The one-dimensional extent of an object or the distance between two points."""
 
     # --- This part is auto generated. Do not change manually. ---
+
     def __init__(
         self,
         miles: float = 0.0,
@@ -89,7 +91,7 @@ class Length(_QuantityBase):
         self._base_value = 0.0
         self._base_value += miles * 1609.34
         self._base_value += kilometers * 10**3
-        self._base_value += meters * 10**0
+        self._base_value += meters * 1
         self._base_value += feet * 0.3048
         self._base_value += inches * 0.0254
         self._base_value += centimeters * 10**-2
@@ -109,7 +111,7 @@ class Length(_QuantityBase):
     @property
     def meters(self) -> float:
         """The length in meters."""
-        return self._base_value / 10**0
+        return self._base_value / 1
 
     @property
     def feet(self) -> float:
@@ -143,6 +145,7 @@ class Velocity(_QuantityBase):
     """Distance per time."""
 
     # --- This part is auto generated. Do not change manually. ---
+
     def __init__(
         self,
         meters_per_second: float = 0.0,
@@ -150,14 +153,14 @@ class Velocity(_QuantityBase):
         miles_per_hour: float = 0.0,
     ) -> None:
         self._base_value = 0.0
-        self._base_value += meters_per_second * 10**0
+        self._base_value += meters_per_second * 1
         self._base_value += kilometers_per_hour * (1 / 3.6)
         self._base_value += miles_per_hour * (1 / 2.23694)
 
     @property
     def meters_per_second(self) -> float:
         """The velocity in meters per second."""
-        return self._base_value / 10**0
+        return self._base_value / 1
 
     @property
     def kilometers_per_hour(self) -> float:
@@ -176,6 +179,7 @@ class Time(_QuantityBase):
     """The duration of an event."""
 
     # --- This part is auto generated. Do not change manually. ---
+
     def __init__(
         self,
         hours: float = 0.0,

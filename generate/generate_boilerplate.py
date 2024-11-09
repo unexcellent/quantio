@@ -45,7 +45,7 @@ def generate_boilerplate(quantities_with_fields: dict[str, dict[str, str]]) -> N
 
 
 def _generate_init(units: dict[str, str]) -> list[str]:
-    code = [" " * 4 + "def __init__(", " " * 8 + "self,"]
+    code = ["", " " * 4 + "def __init__(", " " * 8 + "self,"]
 
     for unit in units:
         code.append(" " * 8 + f"{unit}: float = 0.0,")
@@ -56,6 +56,7 @@ def _generate_init(units: dict[str, str]) -> list[str]:
     for unit, factor in units.items():
         code.append(" " * 8 + f"self._base_value += {unit} * {factor}")
 
+    code.append("")
     return code
 
 
@@ -63,11 +64,11 @@ def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]
     code = []
 
     for unit, factor in units.items():
-        code.append("")
         code.append(" " * 4 + "@property")
         code.append(" " * 4 + f"def {unit}(self) -> float:")
         code.append(" " * 8 + f'"""The {current_class.lower()} in {unit.replace("_", " ")}."""')
         code.append(" " * 8 + f"return self._base_value / {factor}")
+        code.append("")
 
     return code
 
@@ -77,7 +78,7 @@ if __name__ == "__main__":
         "Area": {
             "square_miles": "1609.34**2",
             "square_kilometers": "10 ** (3 * 2)",
-            "square_meters": "10**0",
+            "square_meters": "1",
             "square_feet": "0.3048**2",
             "square_inches": "0.0254**2",
             "square_centimeters": "10 ** (-2 * 2)",
@@ -87,7 +88,7 @@ if __name__ == "__main__":
         "Length": {
             "miles": "1609.34",
             "kilometers": "10**3",
-            "meters": "10**0",
+            "meters": "1",
             "feet": "0.3048",
             "inches": "0.0254",
             "centimeters": "10**-2",
@@ -95,7 +96,7 @@ if __name__ == "__main__":
             "micrometers": "10**-6",
         },
         "Velocity": {
-            "meters_per_second": "10**0",
+            "meters_per_second": "1",
             "kilometers_per_hour": "(1 / 3.6)",
             "miles_per_hour": "(1 / 2.23694)",
         },
