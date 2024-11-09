@@ -30,6 +30,33 @@ class Acceleration(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Angle(_QuantityBase):
+    """The figure formed by two rays."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    def __init__(
+        self,
+        degrees: float = 0.0,
+        radians: float = 0.0,
+    ) -> None:
+        self._base_value = 0.0
+        self._base_value += degrees * (3.141592653589793 / 180)
+        self._base_value += radians * 1
+
+    @property
+    def degrees(self) -> float:
+        """The angle in degrees."""
+        return self._base_value / (3.141592653589793 / 180)
+
+    @property
+    def radians(self) -> float:
+        """The angle in radians."""
+        return self._base_value / 1
+
+    # --- End of auto generated part. ---
+
+
 class Area(_QuantityBase):
     """The two-dimensional extent of an object."""
 

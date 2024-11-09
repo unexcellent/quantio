@@ -79,6 +79,10 @@ if __name__ == "__main__":
             "meters_per_square_second": "1",
             "g_force": "(1 / 9.8)",
         },
+        "Angle": {
+            "degrees": "(3.141592653589793 / 180)",
+            "radians": "1",
+        },
         "Area": {
             "square_miles": "1609.34**2",
             "square_kilometers": "10 ** (3 * 2)",
