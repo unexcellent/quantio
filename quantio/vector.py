@@ -33,6 +33,11 @@ class Vector(Generic[T]):
         other_elements = other._elements if isinstance(other, Vector) else np.array(other)
         return Vector[T](self._elements + other_elements)
 
+    def __sub__(self, other: Vector[T] | np.ndarray) -> Vector[T]:
+        """Subtract another vector from this one."""
+        other_elements = other._elements if isinstance(other, Vector) else np.array(other)
+        return Vector[T](self._elements - other_elements)
+
     def __eq__(self, other: object) -> bool:
         """Assess if this object is the same as another."""
         if not isinstance(other, Vector):
