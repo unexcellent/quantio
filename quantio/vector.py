@@ -27,3 +27,15 @@ class Vector(Generic[T]):
     def __setitem__(self, index: int, value: T) -> None:
         """Set the element at a specific index."""
         self._elements[index] = value
+
+    def __add__(self, other: Vector[T] | np.ndarray) -> Vector[T]:
+        """Add another vector to this one."""
+        other_elements = other._elements if isinstance(other, Vector) else np.array(other)
+        return Vector[T](self._elements + other_elements)
+
+    def __eq__(self, other: object) -> bool:
+        """Assess if this object is the same as another."""
+        if not isinstance(other, Vector):
+            return False
+
+        return np.all(other._elements == self._elements)
