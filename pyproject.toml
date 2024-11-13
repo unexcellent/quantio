@@ -46,6 +46,8 @@ ignore = [
     "TCH003",  # same as TCH001
 
     "SIM103",  # less readable in some cases imo
+
+    "SLF001",  # necessary for vector operations
 ]
 
 [tool.mypy]

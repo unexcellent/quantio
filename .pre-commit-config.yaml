@@ -28,7 +28,7 @@ repos:
       name: Run Type Checker
       types_or: [python, pyi, toml, yaml]
       pass_filenames: false
-      args: [quantio]
+      args: [quantio, test]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.7.0

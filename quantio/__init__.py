@@ -2,6 +2,7 @@
 
 from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 from .quantities import Acceleration, Angle, Area, Length, Mass, Time, Velocity
+from .vector import Vector
 
 __all__ = [
     "Acceleration",
@@ -11,6 +12,7 @@ __all__ = [
     "Mass",
     "Time",
     "Velocity",
+    "Vector",
     "CanNotAddTypesError",
     "CanNotSubtractTypesError",
 ]
