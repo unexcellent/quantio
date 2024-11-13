@@ -52,18 +52,11 @@ class Vector(Generic[T]):
 
     def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
-        if isinstance(other, (float, int)):
-            other_elements = np.array([other])
-        elif isinstance(other, _QuantityBase):
-            other_elements = np.array([other._base_value])
-        elif isinstance(other, Vector):
-            other_elements = other.to_numpy()
-        elif isinstance(other, np.ndarray):
-            other_elements = other
-        else:
-            raise TypeError
+        return self.to_numpy() * _other_to_numpy(other)
 
-        return self.to_numpy() * other_elements
+    def __truediv__(self, other: Vector | np.ndarray | float) -> np.ndarray:
+        """Multipy this vector with either another vector or a scalar."""
+        return self.to_numpy() / _other_to_numpy(other)
 
     def __eq__(self, other: object) -> bool:
         """Assess if this object is the same as another."""
@@ -71,3 +64,19 @@ class Vector(Generic[T]):
             return False
 
         return np.all(other._elements == self._elements)
+
+
+def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
+    if isinstance(other, (float, int)):
+        return np.array([other])
+
+    if isinstance(other, _QuantityBase):
+        return np.array([other._base_value])
+
+    if isinstance(other, Vector):
+        return other.to_numpy()
+
+    if isinstance(other, np.ndarray):
+        return other
+
+    raise TypeError
