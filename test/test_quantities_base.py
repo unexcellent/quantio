@@ -20,7 +20,7 @@ def test_add__false_class():
     length = Length(meters=1)
 
     with pytest.raises(CanNotAddTypesError):
-        length += 1
+        length += 1  # type: ignore
 
 
 def test_sub__success():
@@ -35,7 +35,7 @@ def test_sub__false_class():
     length = Length(meters=1)
 
     with pytest.raises(CanNotSubtractTypesError):
-        length -= 1
+        length -= 1  # type: ignore
 
 
 if __name__ == "__main__":
