@@ -27,6 +27,11 @@ class Acceleration(_QuantityBase):
         self._base_value += meters_per_square_second * 1
         self._base_value += g_force * (1 / 9.8)
 
+    @classmethod
+    def zero(cls) -> Acceleration:
+        """Create a Acceleration with a value of zero."""
+        return Acceleration()
+
     # --- End of auto generated part. ---
 
 
@@ -53,6 +58,11 @@ class Angle(_QuantityBase):
         self._base_value = 0.0
         self._base_value += degrees * (3.141592653589793 / 180)
         self._base_value += radians * 1
+
+    @classmethod
+    def zero(cls) -> Angle:
+        """Create a Angle with a value of zero."""
+        return Angle()
 
     # --- End of auto generated part. ---
 
@@ -123,6 +133,11 @@ class Area(_QuantityBase):
         self._base_value += square_millimeters * 10 ** (-3 * 2)
         self._base_value += square_micrometers * 10 ** (-6 * 2)
 
+    @classmethod
+    def zero(cls) -> Area:
+        """Create a Area with a value of zero."""
+        return Area()
+
     # --- End of auto generated part. ---
 
 
@@ -192,6 +207,11 @@ class Length(_QuantityBase):
         self._base_value += millimeters * 10**-3
         self._base_value += micrometers * 10**-6
 
+    @classmethod
+    def zero(cls) -> Length:
+        """Create a Length with a value of zero."""
+        return Length()
+
     # --- End of auto generated part. ---
 
 
@@ -254,6 +274,11 @@ class Mass(_QuantityBase):
         self._base_value += milligrams * 10**-6
         self._base_value += micrograms * 10**-9
 
+    @classmethod
+    def zero(cls) -> Mass:
+        """Create a Mass with a value of zero."""
+        return Mass()
+
     # --- End of auto generated part. ---
 
 
@@ -287,6 +312,11 @@ class Velocity(_QuantityBase):
         self._base_value += meters_per_second * 1
         self._base_value += kilometers_per_hour * (1 / 3.6)
         self._base_value += miles_per_hour * (1 / 2.23694)
+
+    @classmethod
+    def zero(cls) -> Velocity:
+        """Create a Velocity with a value of zero."""
+        return Velocity()
 
     # --- End of auto generated part. ---
 
@@ -328,5 +358,10 @@ class Time(_QuantityBase):
         self._base_value += minutes * 60
         self._base_value += seconds * 1
         self._base_value += milliseconds * 10**-3
+
+    @classmethod
+    def zero(cls) -> Time:
+        """Create a Time with a value of zero."""
+        return Time()
 
     # --- End of auto generated part. ---
