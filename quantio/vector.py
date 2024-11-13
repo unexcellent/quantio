@@ -4,6 +4,8 @@ from typing import Generic, TypeVar
 
 import numpy as np
 
+from ._quantity_base import _QuantityBase
+
 T = TypeVar("T")
 
 
@@ -37,6 +39,33 @@ class Vector(Generic[T]):
         """Subtract another vector from this one."""
         other_elements = other._elements if isinstance(other, Vector) else np.array(other)
         return Vector[T](self._elements - other_elements)
+
+    def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
+        """Multipy this vector with either another vector or a scalar."""
+        if isinstance(self._elements[0], _QuantityBase):
+            self_elements = np.array([element._base_value for element in self._elements])
+        else:
+            self_elements = self._elements
+
+        if isinstance(other, (float, int)):
+            other_elements = np.array([other])
+
+        elif isinstance(other, _QuantityBase):
+            other_elements = np.array([other._base_value])
+
+        elif isinstance(other, Vector):
+            if isinstance(self._elements[0], _QuantityBase):
+                other_elements = np.array([element._base_value for element in other._elements])
+            else:
+                other_elements = other._elements
+
+        elif isinstance(other, np.ndarray):
+            other_elements = other
+
+        else:
+            raise TypeError
+
+        return self_elements * other_elements
 
     def __eq__(self, other: object) -> bool:
         """Assess if this object is the same as another."""
