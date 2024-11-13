@@ -23,3 +23,7 @@ class Vector(Generic[T]):
     def __getitem__(self, index: int) -> T:
         """Return the element at a specific index."""
         return self._elements[index]
+
+    def __setitem__(self, index: int, value: T) -> None:
+        """Set the element at a specific index."""
+        self._elements[index] = value
