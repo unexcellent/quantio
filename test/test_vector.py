@@ -2,7 +2,13 @@ import pytest
 
 import numpy as np
 
-from quantio import Vector, Length, CanNotAddTypesError, CanNotSubtractTypesError
+from quantio import (
+    Vector,
+    Length,
+    CanNotAddTypesError,
+    CanNotSubtractTypesError,
+    NoUnitSpecifiedError,
+)
 
 
 def test_init():
@@ -153,6 +159,27 @@ def test_divide__wrong_dimension():
 
     with pytest.raises(ValueError):
         vec1 / vec2
+
+
+def test_to_numpy__floats():
+    vec: Vector[float] = Vector([0.0, 1.0])
+
+    actual = vec.to_numpy()
+    assert np.all(actual == np.array([0.0, 1.0]))
+
+
+def test_to_numpy__quantity():
+    vec: Vector[Length] = Vector([Length(meters=1), Length(meters=2), Length(meters=3)])
+
+    actual = vec.to_numpy("centimeters")
+    assert np.all(actual == np.array([100.0, 200.0, 300.0]))
+
+
+def test_to_numpy__quantity_no_unit():
+    vec: Vector[Length] = Vector([Length(meters=1), Length(meters=2), Length(meters=3)])
+
+    with pytest.raises(NoUnitSpecifiedError):
+        vec.to_numpy()
 
 
 if __name__ == "__main__":

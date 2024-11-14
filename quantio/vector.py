@@ -5,6 +5,7 @@ from typing import Generic, TypeVar
 import numpy as np
 
 from ._quantity_base import _QuantityBase
+from .exceptions import NoUnitSpecifiedError
 
 T = TypeVar("T")
 
@@ -17,13 +18,12 @@ class Vector(Generic[T]):
     def __init__(self, elements: list | tuple | np.ndarray) -> None:
         self._elements = np.array(elements)
 
-    def to_numpy(self) -> np.ndarray[float]:
+    def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
-        if len(self._elements) == 0:
-            return np.array([])
-
         if isinstance(self._elements[0], _QuantityBase):
-            return np.array([element._base_value for element in self._elements])
+            if unit is None:
+                raise NoUnitSpecifiedError
+            return np.array([getattr(element, unit) for element in self._elements])
 
         return np.array([float(element) for element in self._elements])
 
@@ -52,11 +52,19 @@ class Vector(Generic[T]):
 
     def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
-        return self.to_numpy() * _other_to_numpy(other)
+        if isinstance(self._elements[0], _QuantityBase):
+            self_to_numpy = self.to_numpy(self._elements[0]._BASE_UNIT)
+        else:
+            self_to_numpy = self.to_numpy()
+        return self_to_numpy * _other_to_numpy(other)
 
     def __truediv__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
-        return self.to_numpy() / _other_to_numpy(other)
+        if isinstance(self._elements[0], _QuantityBase):
+            self_to_numpy = self.to_numpy(self._elements[0]._BASE_UNIT)
+        else:
+            self_to_numpy = self.to_numpy()
+        return self_to_numpy / _other_to_numpy(other)
 
     def __eq__(self, other: object) -> bool:
         """Assess if this object is the same as another."""
@@ -74,6 +82,8 @@ def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
         return np.array([other._base_value])
 
     if isinstance(other, Vector):
+        if isinstance(other._elements[0], _QuantityBase):
+            return other.to_numpy(other._elements[0]._BASE_UNIT)
         return other.to_numpy()
 
     if isinstance(other, np.ndarray):

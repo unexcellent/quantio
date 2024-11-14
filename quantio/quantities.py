@@ -8,6 +8,8 @@ class Acceleration(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
+    _BASE_UNIT = "meters_per_square_second"
+
     @property
     def meters_per_square_second(self) -> float:
         """The acceleration in meters per square second."""
@@ -40,6 +42,8 @@ class Angle(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
+    _BASE_UNIT = "radians"
+
     @property
     def degrees(self) -> float:
         """The angle in degrees."""
@@ -71,6 +75,8 @@ class Area(_QuantityBase):
     """The two-dimensional extent of an object."""
 
     # --- This part is auto generated. Do not change manually. ---
+
+    _BASE_UNIT = "square_meters"
 
     @property
     def square_miles(self) -> float:
@@ -146,6 +152,8 @@ class Length(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
+    _BASE_UNIT = "meters"
+
     @property
     def miles(self) -> float:
         """The length in miles."""
@@ -220,6 +228,8 @@ class Mass(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
+    _BASE_UNIT = "kilograms"
+
     @property
     def tonnes(self) -> float:
         """The mass in tonnes."""
@@ -287,6 +297,8 @@ class Velocity(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
+    _BASE_UNIT = "meters_per_second"
+
     @property
     def meters_per_second(self) -> float:
         """The velocity in meters per second."""
@@ -325,6 +337,8 @@ class Time(_QuantityBase):
     """The duration of an event."""
 
     # --- This part is auto generated. Do not change manually. ---
+
+    _BASE_UNIT = "seconds"
 
     @property
     def hours(self) -> float:

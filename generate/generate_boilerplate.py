@@ -23,6 +23,9 @@ def generate_boilerplate(quantities_with_fields: dict[str, dict[str, str]]) -> N
             target_content_with_boilerplate.append(line)
             target_content_with_boilerplate.append("")
             target_content_with_boilerplate.extend(
+                _generate_base_unit(current_class, quantities_with_fields[current_class])
+            )
+            target_content_with_boilerplate.extend(
                 _generate_properties(current_class, quantities_with_fields[current_class])
             )
             target_content_with_boilerplate.extend(
@@ -44,6 +47,19 @@ def generate_boilerplate(quantities_with_fields: dict[str, dict[str, str]]) -> N
 
     with TARGET_FILE_PATH.open("w") as target_file:
         target_file.writelines(target_content_with_boilerplate)
+
+
+def _generate_base_unit(current_class: str, units: dict[str, str]) -> list[str]:
+    base_unit = None
+    for unit, factor in units.items():
+        if float(eval(factor)) == 1:
+            base_unit = unit
+            break
+
+    if base_unit is None:
+        raise ValueError(f"{current_class} needs a unit with factor equal to 1.")
+
+    return [f'    _BASE_UNIT = "{base_unit}"', ""]
 
 
 def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]:

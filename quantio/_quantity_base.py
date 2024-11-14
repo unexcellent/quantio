@@ -11,6 +11,9 @@ class _QuantityBase(ABC):
     _base_value: float
     "The base unit of the quantity."
 
+    _BASE_UNIT: str
+    "Name of the unit with a factor of 1."
+
     def __eq__(self, other: object) -> bool:
         """Assess if this object is the same as another."""
         if isinstance(other, type(self)):
