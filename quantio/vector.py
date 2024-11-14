@@ -11,7 +11,7 @@ T = TypeVar("T")
 
 
 class Vector(Generic[T]):
-    """An 1 dimensional array of either quantity or numeric elements."""
+    """A 1 dimensional array of either quantity or numeric elements."""
 
     _elements: np.array
 
@@ -53,7 +53,7 @@ class Vector(Generic[T]):
     def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
         if isinstance(self._elements[0], _QuantityBase):
-            self_to_numpy = self.to_numpy(self._elements[0]._BASE_UNIT)
+            self_to_numpy = self.to_numpy(self._elements[0].BASE_UNIT)
         else:
             self_to_numpy = self.to_numpy()
         return self_to_numpy * _other_to_numpy(other)
@@ -61,7 +61,7 @@ class Vector(Generic[T]):
     def __truediv__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
         if isinstance(self._elements[0], _QuantityBase):
-            self_to_numpy = self.to_numpy(self._elements[0]._BASE_UNIT)
+            self_to_numpy = self.to_numpy(self._elements[0].BASE_UNIT)
         else:
             self_to_numpy = self.to_numpy()
         return self_to_numpy / _other_to_numpy(other)
@@ -83,7 +83,7 @@ def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
 
     if isinstance(other, Vector):
         if isinstance(other._elements[0], _QuantityBase):
-            return other.to_numpy(other._elements[0]._BASE_UNIT)
+            return other.to_numpy(other._elements[0].BASE_UNIT)
         return other.to_numpy()
 
     if isinstance(other, np.ndarray):

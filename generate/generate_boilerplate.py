@@ -59,7 +59,7 @@ def _generate_base_unit(current_class: str, units: dict[str, str]) -> list[str]:
     if base_unit is None:
         raise ValueError(f"{current_class} needs a unit with factor equal to 1.")
 
-    return [f'    _BASE_UNIT = "{base_unit}"', ""]
+    return [f'    BASE_UNIT = "{base_unit}"', ""]
 
 
 def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]:
