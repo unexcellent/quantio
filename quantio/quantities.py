@@ -206,6 +206,62 @@ class ElectricalResistance(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class ElectricCurrent(_QuantityBase):
+    """The flow of charged particles moving through an electrical conductor or space."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "amperes"
+
+    @property
+    def gigaamperes(self) -> float:
+        """The electriccurrent in gigaamperes."""
+        return self._base_value / 10**9
+
+    @property
+    def megaamperes(self) -> float:
+        """The electriccurrent in megaamperes."""
+        return self._base_value / 10**6
+
+    @property
+    def kiloamperes(self) -> float:
+        """The electriccurrent in kiloamperes."""
+        return self._base_value / 10**3
+
+    @property
+    def amperes(self) -> float:
+        """The electriccurrent in amperes."""
+        return self._base_value / 1
+
+    @property
+    def milliamperes(self) -> float:
+        """The electriccurrent in milliamperes."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigaamperes: float = 0.0,
+        megaamperes: float = 0.0,
+        kiloamperes: float = 0.0,
+        amperes: float = 0.0,
+        milliamperes: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigaamperes * 10**9
+        self._base_value += megaamperes * 10**6
+        self._base_value += kiloamperes * 10**3
+        self._base_value += amperes * 1
+        self._base_value += milliamperes * 10**-3
+
+    @classmethod
+    def zero(cls) -> ElectricCurrent:
+        """Create a ElectricCurrent with a value of zero."""
+        return ElectricCurrent()
+
+    # --- End of auto generated part. ---
+
+
 class Energy(_QuantityBase):
     """Energy describes the ability of an object to perform work."""
 

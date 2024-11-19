@@ -128,6 +128,13 @@ if __name__ == "__main__":
             "ohm": "1",
             "milliohm": "10**-3",
         },
+        "ElectricCurrent": {
+            "gigaamperes": "10**9",
+            "megaamperes": "10**6",
+            "kiloamperes": "10**3",
+            "amperes": "1",
+            "milliamperes": "10**-3",
+        },
         "Energy": {
             "gigajoules": "10**9",
             "megajoules": "10**6",
