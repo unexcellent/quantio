@@ -94,6 +94,10 @@ class Vector(Generic[T]):
 
         return np.all(other._elements == self._elements)
 
+    def __len__(self) -> int:
+        """Return the number of elements in this vector."""
+        return self._elements.__len__()
+
 
 def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
     if isinstance(other, (float, int)):

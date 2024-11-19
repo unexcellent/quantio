@@ -200,5 +200,10 @@ def test_arange__false_type_combination():
         Vector.arange(start=Length(meters=0), stop=Time(meters=5), step=Length(meters=2))
 
 
+def test_len():
+    vec = Vector[float]([0, 0, 0, 0])
+    assert len(vec) == 4
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
