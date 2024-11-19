@@ -147,11 +147,11 @@ if __name__ == "__main__":
             "micrograms": "10**-9",
         },
         "Power": {
-            "gigawatt": "10**9",
-            "megawatt": "10**6",
-            "kilowatt": "10**3",
-            "watt": "1",
-            "milliwatt": "10**-3",
+            "gigawatts": "10**9",
+            "megawatts": "10**6",
+            "kilowatts": "10**3",
+            "watts": "1",
+            "milliwatts": "10**-3",
         },
         "Velocity": {
             "meters_per_second": "1",

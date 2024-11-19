@@ -351,48 +351,48 @@ class Power(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    BASE_UNIT = "watt"
+    BASE_UNIT = "watts"
 
     @property
-    def gigawatt(self) -> float:
-        """The power in gigawatt."""
+    def gigawatts(self) -> float:
+        """The power in gigawatts."""
         return self._base_value / 10**9
 
     @property
-    def megawatt(self) -> float:
-        """The power in megawatt."""
+    def megawatts(self) -> float:
+        """The power in megawatts."""
         return self._base_value / 10**6
 
     @property
-    def kilowatt(self) -> float:
-        """The power in kilowatt."""
+    def kilowatts(self) -> float:
+        """The power in kilowatts."""
         return self._base_value / 10**3
 
     @property
-    def watt(self) -> float:
-        """The power in watt."""
+    def watts(self) -> float:
+        """The power in watts."""
         return self._base_value / 1
 
     @property
-    def milliwatt(self) -> float:
-        """The power in milliwatt."""
+    def milliwatts(self) -> float:
+        """The power in milliwatts."""
         return self._base_value / 10**-3
 
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigawatt: float = 0.0,
-        megawatt: float = 0.0,
-        kilowatt: float = 0.0,
-        watt: float = 0.0,
-        milliwatt: float = 0.0,
+        gigawatts: float = 0.0,
+        megawatts: float = 0.0,
+        kilowatts: float = 0.0,
+        watts: float = 0.0,
+        milliwatts: float = 0.0,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigawatt * 10**9
-        self._base_value += megawatt * 10**6
-        self._base_value += kilowatt * 10**3
-        self._base_value += watt * 1
-        self._base_value += milliwatt * 10**-3
+        self._base_value += gigawatts * 10**9
+        self._base_value += megawatts * 10**6
+        self._base_value += kilowatts * 10**3
+        self._base_value += watts * 1
+        self._base_value += milliwatts * 10**-3
 
     @classmethod
     def zero(cls) -> Power:
