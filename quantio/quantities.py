@@ -8,7 +8,7 @@ class Acceleration(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "meters_per_square_second"
+    BASE_UNIT = "meters_per_square_second"
 
     @property
     def meters_per_square_second(self) -> float:
@@ -22,10 +22,11 @@ class Acceleration(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         meters_per_square_second: float = 0.0,
         g_force: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += meters_per_square_second * 1
         self._base_value += g_force * (1 / 9.8)
 
@@ -42,7 +43,7 @@ class Angle(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "radians"
+    BASE_UNIT = "radians"
 
     @property
     def degrees(self) -> float:
@@ -56,10 +57,11 @@ class Angle(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         degrees: float = 0.0,
         radians: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += degrees * (3.141592653589793 / 180)
         self._base_value += radians * 1
 
@@ -76,7 +78,7 @@ class Area(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "square_meters"
+    BASE_UNIT = "square_meters"
 
     @property
     def square_miles(self) -> float:
@@ -120,6 +122,7 @@ class Area(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         square_miles: float = 0.0,
         square_kilometers: float = 0.0,
         square_meters: float = 0.0,
@@ -129,7 +132,7 @@ class Area(_QuantityBase):
         square_millimeters: float = 0.0,
         square_micrometers: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += square_miles * 1609.34**2
         self._base_value += square_kilometers * 10 ** (3 * 2)
         self._base_value += square_meters * 1
@@ -147,12 +150,61 @@ class Area(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Frequency(_QuantityBase):
+    """Frequency is the number of occurrences of a repeating event per unit of time.."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "hertz"
+
+    @property
+    def gigahertz(self) -> float:
+        """The frequency in gigahertz."""
+        return self._base_value / 10**9
+
+    @property
+    def megahertz(self) -> float:
+        """The frequency in megahertz."""
+        return self._base_value / 10**6
+
+    @property
+    def kilohertz(self) -> float:
+        """The frequency in kilohertz."""
+        return self._base_value / 10**3
+
+    @property
+    def hertz(self) -> float:
+        """The frequency in hertz."""
+        return self._base_value / 1
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigahertz: float = 0.0,
+        megahertz: float = 0.0,
+        kilohertz: float = 0.0,
+        hertz: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigahertz * 10**9
+        self._base_value += megahertz * 10**6
+        self._base_value += kilohertz * 10**3
+        self._base_value += hertz * 1
+
+    @classmethod
+    def zero(cls) -> Frequency:
+        """Create a Frequency with a value of zero."""
+        return Frequency()
+
+    # --- End of auto generated part. ---
+
+
 class Length(_QuantityBase):
     """The one-dimensional extent of an object or the distance between two points."""
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "meters"
+    BASE_UNIT = "meters"
 
     @property
     def miles(self) -> float:
@@ -196,6 +248,7 @@ class Length(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         miles: float = 0.0,
         kilometers: float = 0.0,
         meters: float = 0.0,
@@ -205,7 +258,7 @@ class Length(_QuantityBase):
         millimeters: float = 0.0,
         micrometers: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += miles * 1609.34
         self._base_value += kilometers * 10**3
         self._base_value += meters * 1
@@ -228,7 +281,7 @@ class Mass(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "kilograms"
+    BASE_UNIT = "kilograms"
 
     @property
     def tonnes(self) -> float:
@@ -267,6 +320,7 @@ class Mass(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         tonnes: float = 0.0,
         kilograms: float = 0.0,
         pounds: float = 0.0,
@@ -275,7 +329,7 @@ class Mass(_QuantityBase):
         milligrams: float = 0.0,
         micrograms: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += tonnes * 10**3
         self._base_value += kilograms * 1
         self._base_value += pounds * (1 / 2.20462)
@@ -297,7 +351,7 @@ class Velocity(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "meters_per_second"
+    BASE_UNIT = "meters_per_second"
 
     @property
     def meters_per_second(self) -> float:
@@ -316,11 +370,12 @@ class Velocity(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         meters_per_second: float = 0.0,
         kilometers_per_hour: float = 0.0,
         miles_per_hour: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += meters_per_second * 1
         self._base_value += kilometers_per_hour * (1 / 3.6)
         self._base_value += miles_per_hour * (1 / 2.23694)
@@ -338,7 +393,7 @@ class Time(_QuantityBase):
 
     # --- This part is auto generated. Do not change manually. ---
 
-    _BASE_UNIT = "seconds"
+    BASE_UNIT = "seconds"
 
     @property
     def hours(self) -> float:
@@ -362,12 +417,13 @@ class Time(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         hours: float = 0.0,
         minutes: float = 0.0,
         seconds: float = 0.0,
         milliseconds: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += hours * 60 * 60
         self._base_value += minutes * 60
         self._base_value += seconds * 1
