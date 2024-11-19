@@ -570,48 +570,6 @@ class Power(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Velocity(_QuantityBase):
-    """Distance per time."""
-
-    # --- This part is auto generated. Do not change manually. ---
-
-    BASE_UNIT = "meters_per_second"
-
-    @property
-    def meters_per_second(self) -> float:
-        """The velocity in meters per second."""
-        return self._base_value / 1
-
-    @property
-    def kilometers_per_hour(self) -> float:
-        """The velocity in kilometers per hour."""
-        return self._base_value / (1 / 3.6)
-
-    @property
-    def miles_per_hour(self) -> float:
-        """The velocity in miles per hour."""
-        return self._base_value / (1 / 2.23694)
-
-    def __init__(
-        self,
-        _base_value: float = 0.0,
-        meters_per_second: float = 0.0,
-        kilometers_per_hour: float = 0.0,
-        miles_per_hour: float = 0.0,
-    ) -> None:
-        self._base_value = _base_value
-        self._base_value += meters_per_second * 1
-        self._base_value += kilometers_per_hour * (1 / 3.6)
-        self._base_value += miles_per_hour * (1 / 2.23694)
-
-    @classmethod
-    def zero(cls) -> Velocity:
-        """Create a Velocity with a value of zero."""
-        return Velocity()
-
-    # --- End of auto generated part. ---
-
-
 class Time(_QuantityBase):
     """The duration of an event."""
 
@@ -657,5 +615,103 @@ class Time(_QuantityBase):
     def zero(cls) -> Time:
         """Create a Time with a value of zero."""
         return Time()
+
+    # --- End of auto generated part. ---
+
+
+class Velocity(_QuantityBase):
+    """Distance per time."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "meters_per_second"
+
+    @property
+    def meters_per_second(self) -> float:
+        """The velocity in meters per second."""
+        return self._base_value / 1
+
+    @property
+    def kilometers_per_hour(self) -> float:
+        """The velocity in kilometers per hour."""
+        return self._base_value / (1 / 3.6)
+
+    @property
+    def miles_per_hour(self) -> float:
+        """The velocity in miles per hour."""
+        return self._base_value / (1 / 2.23694)
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        meters_per_second: float = 0.0,
+        kilometers_per_hour: float = 0.0,
+        miles_per_hour: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += meters_per_second * 1
+        self._base_value += kilometers_per_hour * (1 / 3.6)
+        self._base_value += miles_per_hour * (1 / 2.23694)
+
+    @classmethod
+    def zero(cls) -> Velocity:
+        """Create a Velocity with a value of zero."""
+        return Velocity()
+
+    # --- End of auto generated part. ---
+
+
+class Voltage(_QuantityBase):
+    """The difference in electric potential between two points."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "volts"
+
+    @property
+    def gigavolts(self) -> float:
+        """The voltage in gigavolts."""
+        return self._base_value / 10**9
+
+    @property
+    def megavolts(self) -> float:
+        """The voltage in megavolts."""
+        return self._base_value / 10**6
+
+    @property
+    def kilovolts(self) -> float:
+        """The voltage in kilovolts."""
+        return self._base_value / 10**3
+
+    @property
+    def volts(self) -> float:
+        """The voltage in volts."""
+        return self._base_value / 1
+
+    @property
+    def millivolts(self) -> float:
+        """The voltage in millivolts."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigavolts: float = 0.0,
+        megavolts: float = 0.0,
+        kilovolts: float = 0.0,
+        volts: float = 0.0,
+        millivolts: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigavolts * 10**9
+        self._base_value += megavolts * 10**6
+        self._base_value += kilovolts * 10**3
+        self._base_value += volts * 1
+        self._base_value += millivolts * 10**-3
+
+    @classmethod
+    def zero(cls) -> Voltage:
+        """Create a Voltage with a value of zero."""
+        return Voltage()
 
     # --- End of auto generated part. ---

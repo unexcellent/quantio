@@ -174,16 +174,23 @@ if __name__ == "__main__":
             "watts": "1",
             "milliwatts": "10**-3",
         },
-        "Velocity": {
-            "meters_per_second": "1",
-            "kilometers_per_hour": "(1 / 3.6)",
-            "miles_per_hour": "(1 / 2.23694)",
-        },
         "Time": {
             "hours": "60 * 60",
             "minutes": "60",
             "seconds": "1",
             "milliseconds": "10**-3",
+        },
+        "Velocity": {
+            "meters_per_second": "1",
+            "kilometers_per_hour": "(1 / 3.6)",
+            "miles_per_hour": "(1 / 2.23694)",
+        },
+        "Voltage": {
+            "gigavolts": "10**9",
+            "megavolts": "10**6",
+            "kilovolts": "10**3",
+            "volts": "1",
+            "millivolts": "10**-3",
         },
     }
 

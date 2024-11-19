@@ -14,6 +14,7 @@ from .quantities import (
     Power,
     Time,
     Velocity,
+    Voltage,
 )
 from .vector import Vector
 
@@ -30,6 +31,7 @@ __all__ = [
     "Power",
     "Time",
     "Velocity",
+    "Voltage",
     "Vector",
     "CanNotAddTypesError",
     "CanNotSubtractTypesError",
