@@ -39,6 +39,11 @@ class Vector(Generic[T]):
 
         return Vector(np.arange(start, stop, step))
 
+    @classmethod
+    def tile(cls, element: T, length: int) -> Vector[T]:
+        """Construct a Vector by repeating an element a certain number of times."""
+        return Vector([element] * length)
+
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
         if isinstance(self._elements[0], _QuantityBase):

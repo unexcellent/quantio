@@ -205,5 +205,21 @@ def test_len():
     assert len(vec) == 4
 
 
+def test_tile__floats():
+    actual = Vector.tile(0, 5)
+    assert actual == Vector([0, 0, 0, 0, 0])
+
+
+def test_tile__quantities():
+    actual = Vector.tile(Length.zero(), 3)
+    assert actual == Vector([Length.zero(), Length.zero(), Length.zero()])
+
+
+def test_tile__elements_are_independent():
+    actual = Vector.tile(Length(meters=1), 2)
+    actual[0] = Length(meters=2)
+    assert actual == Vector([Length(meters=2), Length(meters=1)])
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
