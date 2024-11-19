@@ -150,6 +150,62 @@ class Area(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Energy(_QuantityBase):
+    """Energy describes the ability of an object to perform work."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "joules"
+
+    @property
+    def gigajoules(self) -> float:
+        """The energy in gigajoules."""
+        return self._base_value / 10**9
+
+    @property
+    def megajoules(self) -> float:
+        """The energy in megajoules."""
+        return self._base_value / 10**6
+
+    @property
+    def kilojoules(self) -> float:
+        """The energy in kilojoules."""
+        return self._base_value / 10**3
+
+    @property
+    def joules(self) -> float:
+        """The energy in joules."""
+        return self._base_value / 1
+
+    @property
+    def millijoules(self) -> float:
+        """The energy in millijoules."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigajoules: float = 0.0,
+        megajoules: float = 0.0,
+        kilojoules: float = 0.0,
+        joules: float = 0.0,
+        millijoules: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigajoules * 10**9
+        self._base_value += megajoules * 10**6
+        self._base_value += kilojoules * 10**3
+        self._base_value += joules * 1
+        self._base_value += millijoules * 10**-3
+
+    @classmethod
+    def zero(cls) -> Energy:
+        """Create a Energy with a value of zero."""
+        return Energy()
+
+    # --- End of auto generated part. ---
+
+
 class Frequency(_QuantityBase):
     """The number of occurrences of a repeating event per unit of time."""
 

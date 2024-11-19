@@ -121,6 +121,13 @@ if __name__ == "__main__":
             "square_millimeters": "10 ** (-3 * 2)",
             "square_micrometers": "10 ** (-6 * 2)",
         },
+        "Energy": {
+            "gigajoules": "10**9",
+            "megajoules": "10**6",
+            "kilojoules": "10**3",
+            "joules": "1",
+            "millijoules": "10**-3",
+        },
         "Frequency": {
             "gigahertz": "10**9",
             "megahertz": "10**6",
