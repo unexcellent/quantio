@@ -150,6 +150,62 @@ class Area(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class ElectricalResistance(_QuantityBase):
+    """A measure of an objects opposition to the flow of electric current."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "ohm"
+
+    @property
+    def gigaohm(self) -> float:
+        """The electricalresistance in gigaohm."""
+        return self._base_value / 10**9
+
+    @property
+    def megaohm(self) -> float:
+        """The electricalresistance in megaohm."""
+        return self._base_value / 10**6
+
+    @property
+    def kiloohm(self) -> float:
+        """The electricalresistance in kiloohm."""
+        return self._base_value / 10**3
+
+    @property
+    def ohm(self) -> float:
+        """The electricalresistance in ohm."""
+        return self._base_value / 1
+
+    @property
+    def milliohm(self) -> float:
+        """The electricalresistance in milliohm."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigaohm: float = 0.0,
+        megaohm: float = 0.0,
+        kiloohm: float = 0.0,
+        ohm: float = 0.0,
+        milliohm: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigaohm * 10**9
+        self._base_value += megaohm * 10**6
+        self._base_value += kiloohm * 10**3
+        self._base_value += ohm * 1
+        self._base_value += milliohm * 10**-3
+
+    @classmethod
+    def zero(cls) -> ElectricalResistance:
+        """Create a ElectricalResistance with a value of zero."""
+        return ElectricalResistance()
+
+    # --- End of auto generated part. ---
+
+
 class Energy(_QuantityBase):
     """Energy describes the ability of an object to perform work."""
 

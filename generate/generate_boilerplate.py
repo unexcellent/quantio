@@ -121,6 +121,13 @@ if __name__ == "__main__":
             "square_millimeters": "10 ** (-3 * 2)",
             "square_micrometers": "10 ** (-6 * 2)",
         },
+        "ElectricalResistance": {
+            "gigaohm": "10**9",
+            "megaohm": "10**6",
+            "kiloohm": "10**3",
+            "ohm": "1",
+            "milliohm": "10**-3",
+        },
         "Energy": {
             "gigajoules": "10**9",
             "megajoules": "10**6",
