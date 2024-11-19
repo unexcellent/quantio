@@ -150,6 +150,55 @@ class Area(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class Frequency(_QuantityBase):
+    """Frequency is the number of occurrences of a repeating event per unit of time.."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "hertz"
+
+    @property
+    def gigahertz(self) -> float:
+        """The frequency in gigahertz."""
+        return self._base_value / 10**9
+
+    @property
+    def megahertz(self) -> float:
+        """The frequency in megahertz."""
+        return self._base_value / 10**6
+
+    @property
+    def kilohertz(self) -> float:
+        """The frequency in kilohertz."""
+        return self._base_value / 10**3
+
+    @property
+    def hertz(self) -> float:
+        """The frequency in hertz."""
+        return self._base_value / 1
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigahertz: float = 0.0,
+        megahertz: float = 0.0,
+        kilohertz: float = 0.0,
+        hertz: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigahertz * 10**9
+        self._base_value += megahertz * 10**6
+        self._base_value += kilohertz * 10**3
+        self._base_value += hertz * 1
+
+    @classmethod
+    def zero(cls) -> Frequency:
+        """Create a Frequency with a value of zero."""
+        return Frequency()
+
+    # --- End of auto generated part. ---
+
+
 class Length(_QuantityBase):
     """The one-dimensional extent of an object or the distance between two points."""
 

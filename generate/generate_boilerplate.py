@@ -93,7 +93,6 @@ def _generate_init(units: dict[str, str]) -> list[str]:
 
 def _generat_zero_function(current_class: str) -> list[str]:
     return [
-        "",
         " " * 4 + "@classmethod",
         " " * 4 + f"def zero(cls) -> {current_class}:",
         " " * 8 + f'"""Create a {current_class} with a value of zero."""',
@@ -121,6 +120,12 @@ if __name__ == "__main__":
             "square_centimeters": "10 ** (-2 * 2)",
             "square_millimeters": "10 ** (-3 * 2)",
             "square_micrometers": "10 ** (-6 * 2)",
+        },
+        "Frequency": {
+            "gigahertz": "10**9",
+            "megahertz": "10**6",
+            "kilohertz": "10**3",
+            "hertz": "1",
         },
         "Length": {
             "miles": "1609.34",
