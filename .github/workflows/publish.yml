@@ -35,16 +35,20 @@ jobs:
       - name: Build the package
         run: poetry build
 
-      - name: Get current version from pyproject.toml
-        id: get_version
-        run: echo "VERSION=$(poetry version -s)" >> $GITHUB_ENV
-
-      - name: Check last version on PyPI
-        id: check_pypi_version
+      - name: Check if version exists on PyPI
+        id: check-version
         run: |
-          LAST_VERSION=$(curl -s https://pypi.org/pypi/<your-package-name>/json | jq -r .info.version)
-          echo "LAST_VERSION=$LAST_VERSION" >> $GITHUB_ENV
+          PACKAGE_NAME=$(poetry version | awk '{print $1}')
+          PACKAGE_VERSION=$(poetry version | awk '{print $2}')
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" https://pypi.org/pypi/$PACKAGE_NAME/$PACKAGE_VERSION/json)
+          if [ "$RESPONSE" == "200" ]; then
+            echo "Version $PACKAGE_VERSION already exists on PyPI. Skipping publish step."
+            echo "exists=true" >> $GITHUB_ENV
+          else
+            echo "exists=false" >> $GITHUB_ENV
+          fi
+        shell: bash
 
       - name: Publish to PyPI (release only)
-        if: env.VERSION != env.LAST_VERSION
+        if: env.exists == 'false'
         run: poetry publish --no-interaction --username __token__ --password ${{ secrets.PYPI_TOKEN }}
