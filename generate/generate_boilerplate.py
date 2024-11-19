@@ -146,6 +146,13 @@ if __name__ == "__main__":
             "milligrams": "10**-6",
             "micrograms": "10**-9",
         },
+        "Power": {
+            "gigawatt": "10**9",
+            "megawatt": "10**6",
+            "kilowatt": "10**3",
+            "watt": "1",
+            "milliwatt": "10**-3",
+        },
         "Velocity": {
             "meters_per_second": "1",
             "kilometers_per_hour": "(1 / 3.6)",

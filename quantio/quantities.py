@@ -151,7 +151,7 @@ class Area(_QuantityBase):
 
 
 class Frequency(_QuantityBase):
-    """Frequency is the number of occurrences of a repeating event per unit of time.."""
+    """The number of occurrences of a repeating event per unit of time."""
 
     # --- This part is auto generated. Do not change manually. ---
 
@@ -342,6 +342,62 @@ class Mass(_QuantityBase):
     def zero(cls) -> Mass:
         """Create a Mass with a value of zero."""
         return Mass()
+
+    # --- End of auto generated part. ---
+
+
+class Power(_QuantityBase):
+    """The amount of energy transferred or converted per unit time."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "watt"
+
+    @property
+    def gigawatt(self) -> float:
+        """The power in gigawatt."""
+        return self._base_value / 10**9
+
+    @property
+    def megawatt(self) -> float:
+        """The power in megawatt."""
+        return self._base_value / 10**6
+
+    @property
+    def kilowatt(self) -> float:
+        """The power in kilowatt."""
+        return self._base_value / 10**3
+
+    @property
+    def watt(self) -> float:
+        """The power in watt."""
+        return self._base_value / 1
+
+    @property
+    def milliwatt(self) -> float:
+        """The power in milliwatt."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        gigawatt: float = 0.0,
+        megawatt: float = 0.0,
+        kilowatt: float = 0.0,
+        watt: float = 0.0,
+        milliwatt: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += gigawatt * 10**9
+        self._base_value += megawatt * 10**6
+        self._base_value += kilowatt * 10**3
+        self._base_value += watt * 1
+        self._base_value += milliwatt * 10**-3
+
+    @classmethod
+    def zero(cls) -> Power:
+        """Create a Power with a value of zero."""
+        return Power()
 
     # --- End of auto generated part. ---
 
