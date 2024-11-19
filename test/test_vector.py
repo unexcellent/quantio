@@ -221,5 +221,15 @@ def test_tile__elements_are_independent():
     assert actual == Vector([Length(meters=2), Length(meters=1)])
 
 
+def test_tile__vector():
+    actual = Vector[float].tile(Vector([0, 1, 2]), 2)
+    assert actual == Vector([0, 1, 2, 0, 1, 2])
+
+
+def test_tile__list():
+    actual = Vector[float].tile([0, 1, 2], 2)
+    assert actual == Vector([0, 1, 2, 0, 1, 2])
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

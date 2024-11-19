@@ -40,9 +40,12 @@ class Vector(Generic[T]):
         return Vector(np.arange(start, stop, step))
 
     @classmethod
-    def tile(cls, element: T, length: int) -> Vector[T]:
+    def tile(cls, element: T | Vector[T] | list[T], length: int) -> Vector[T]:
         """Construct a Vector by repeating an element a certain number of times."""
-        return Vector([element] * length)
+        if isinstance(element, Vector):
+            return Vector(np.tile(element._elements, length))
+
+        return Vector(np.tile(element, length))
 
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
@@ -97,7 +100,10 @@ class Vector(Generic[T]):
         if not isinstance(other, Vector):
             return False
 
-        return np.all(other._elements == self._elements)
+        try:
+            return np.all(other._elements == self._elements)
+        except ValueError:
+            return False
 
     def __len__(self) -> int:
         """Return the number of elements in this vector."""
