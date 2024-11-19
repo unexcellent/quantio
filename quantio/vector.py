@@ -18,6 +18,27 @@ class Vector(Generic[T]):
     def __init__(self, elements: list | tuple | np.ndarray) -> None:
         self._elements = np.array(elements)
 
+    @classmethod
+    def arange(cls, start: T, stop: T, step: T) -> Vector[T]:
+        """Return evenly spaced values within a given interval."""
+        if isinstance(start, _QuantityBase):
+            start_val = start._base_value
+
+            if not isinstance(stop, _QuantityBase):
+                raise TypeError
+            stop_val = stop._base_value
+
+            if not isinstance(step, _QuantityBase):
+                raise TypeError
+            step_val = step._base_value
+
+            element_type = type(start)
+            return Vector(
+                [element_type(value) for value in np.arange(start_val, stop_val, step_val)]
+            )
+
+        return Vector(np.arange(start, stop, step))
+
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
         if isinstance(self._elements[0], _QuantityBase):

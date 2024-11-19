@@ -22,10 +22,11 @@ class Acceleration(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         meters_per_square_second: float = 0.0,
         g_force: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += meters_per_square_second * 1
         self._base_value += g_force * (1 / 9.8)
 
@@ -56,10 +57,11 @@ class Angle(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         degrees: float = 0.0,
         radians: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += degrees * (3.141592653589793 / 180)
         self._base_value += radians * 1
 
@@ -120,6 +122,7 @@ class Area(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         square_miles: float = 0.0,
         square_kilometers: float = 0.0,
         square_meters: float = 0.0,
@@ -129,7 +132,7 @@ class Area(_QuantityBase):
         square_millimeters: float = 0.0,
         square_micrometers: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += square_miles * 1609.34**2
         self._base_value += square_kilometers * 10 ** (3 * 2)
         self._base_value += square_meters * 1
@@ -196,6 +199,7 @@ class Length(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         miles: float = 0.0,
         kilometers: float = 0.0,
         meters: float = 0.0,
@@ -205,7 +209,7 @@ class Length(_QuantityBase):
         millimeters: float = 0.0,
         micrometers: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += miles * 1609.34
         self._base_value += kilometers * 10**3
         self._base_value += meters * 1
@@ -267,6 +271,7 @@ class Mass(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         tonnes: float = 0.0,
         kilograms: float = 0.0,
         pounds: float = 0.0,
@@ -275,7 +280,7 @@ class Mass(_QuantityBase):
         milligrams: float = 0.0,
         micrograms: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += tonnes * 10**3
         self._base_value += kilograms * 1
         self._base_value += pounds * (1 / 2.20462)
@@ -316,11 +321,12 @@ class Velocity(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         meters_per_second: float = 0.0,
         kilometers_per_hour: float = 0.0,
         miles_per_hour: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += meters_per_second * 1
         self._base_value += kilometers_per_hour * (1 / 3.6)
         self._base_value += miles_per_hour * (1 / 2.23694)
@@ -362,12 +368,13 @@ class Time(_QuantityBase):
 
     def __init__(
         self,
+        _base_value: float = 0.0,
         hours: float = 0.0,
         minutes: float = 0.0,
         seconds: float = 0.0,
         milliseconds: float = 0.0,
     ) -> None:
-        self._base_value = 0.0
+        self._base_value = _base_value
         self._base_value += hours * 60 * 60
         self._base_value += minutes * 60
         self._base_value += seconds * 1

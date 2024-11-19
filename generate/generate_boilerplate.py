@@ -76,13 +76,13 @@ def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]
 
 
 def _generate_init(units: dict[str, str]) -> list[str]:
-    code = [" " * 4 + "def __init__(", " " * 8 + "self,"]
+    code = [" " * 4 + "def __init__(", " " * 8 + "self,", " " * 8 + "_base_value: float = 0.0,"]
 
     for unit in units:
         code.append(" " * 8 + f"{unit}: float = 0.0,")
 
     code.append(" " * 4 + ") -> None:")
-    code.append(" " * 8 + "self._base_value = 0.0")
+    code.append(" " * 8 + "self._base_value = _base_value")
 
     for unit, factor in units.items():
         code.append(" " * 8 + f"self._base_value += {unit} * {factor}")

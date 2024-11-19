@@ -5,6 +5,7 @@ import numpy as np
 from quantio import (
     Vector,
     Length,
+    Time,
     CanNotAddTypesError,
     CanNotSubtractTypesError,
     NoUnitSpecifiedError,
@@ -180,6 +181,23 @@ def test_to_numpy__quantity_no_unit():
 
     with pytest.raises(NoUnitSpecifiedError):
         vec.to_numpy()
+
+
+def test_arange__float():
+    actual = Vector[float].arange(start=0.0, stop=5.0, step=2)
+    assert actual == Vector([0, 2, 4])
+
+
+def test_arange__quantity():
+    actual = Vector[Length].arange(
+        start=Length(meters=0), stop=Length(meters=5), step=Length(meters=2)
+    )
+    assert actual == Vector([Length(meters=0), Length(meters=2), Length(meters=4)])
+
+
+def test_arange__false_type_combination():
+    with pytest.raises(TypeError):
+        Vector.arange(start=Length(meters=0), stop=Time(meters=5), step=Length(meters=2))
 
 
 if __name__ == "__main__":
