@@ -4,6 +4,7 @@ from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError, NoUnitSpe
 from .quantities import (
     Acceleration,
     Angle,
+    AngularVelocity,
     Area,
     ElectricalResistance,
     ElectricCurrent,
@@ -21,6 +22,7 @@ from .vector import Vector
 __all__ = [
     "Acceleration",
     "Angle",
+    "AngularVelocity",
     "Area",
     "ElectricalResistance",
     "ElectricCurrent",
