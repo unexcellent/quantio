@@ -179,6 +179,8 @@ if __name__ == "__main__":
             "minutes": "60",
             "seconds": "1",
             "milliseconds": "10**-3",
+            "microseconds": "10**-6",
+            "nanoseconds": "10**-9",
         },
         "Velocity": {
             "meters_per_second": "1",

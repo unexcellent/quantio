@@ -597,6 +597,16 @@ class Time(_QuantityBase):
         """The time in milliseconds."""
         return self._base_value / 10**-3
 
+    @property
+    def microseconds(self) -> float:
+        """The time in microseconds."""
+        return self._base_value / 10**-6
+
+    @property
+    def nanoseconds(self) -> float:
+        """The time in nanoseconds."""
+        return self._base_value / 10**-9
+
     def __init__(
         self,
         _base_value: float = 0.0,
@@ -604,12 +614,16 @@ class Time(_QuantityBase):
         minutes: float = 0.0,
         seconds: float = 0.0,
         milliseconds: float = 0.0,
+        microseconds: float = 0.0,
+        nanoseconds: float = 0.0,
     ) -> None:
         self._base_value = _base_value
         self._base_value += hours * 60 * 60
         self._base_value += minutes * 60
         self._base_value += seconds * 1
         self._base_value += milliseconds * 10**-3
+        self._base_value += microseconds * 10**-6
+        self._base_value += nanoseconds * 10**-9
 
     @classmethod
     def zero(cls) -> Time:
