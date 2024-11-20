@@ -111,6 +111,10 @@ if __name__ == "__main__":
             "degrees": "(3.141592653589793 / 180)",
             "radians": "1",
         },
+        "AngularVelocity": {
+            "degrees_per_second": "(3.141592653589793 / 180)",
+            "radians_per_second": "1",
+        },
         "Area": {
             "square_miles": "1609.34**2",
             "square_kilometers": "10 ** (3 * 2)",

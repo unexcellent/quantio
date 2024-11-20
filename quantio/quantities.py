@@ -73,6 +73,41 @@ class Angle(_QuantityBase):
     # --- End of auto generated part. ---
 
 
+class AngularVelocity(_QuantityBase):
+    """The change in angle per time."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "radians_per_second"
+
+    @property
+    def degrees_per_second(self) -> float:
+        """The angularvelocity in degrees per second."""
+        return self._base_value / (3.141592653589793 / 180)
+
+    @property
+    def radians_per_second(self) -> float:
+        """The angularvelocity in radians per second."""
+        return self._base_value / 1
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        degrees_per_second: float = 0.0,
+        radians_per_second: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += degrees_per_second * (3.141592653589793 / 180)
+        self._base_value += radians_per_second * 1
+
+    @classmethod
+    def zero(cls) -> AngularVelocity:
+        """Create a AngularVelocity with a value of zero."""
+        return AngularVelocity()
+
+    # --- End of auto generated part. ---
+
+
 class Area(_QuantityBase):
     """The two-dimensional extent of an object."""
 
