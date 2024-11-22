@@ -58,9 +58,10 @@ class Vector(Generic[T]):
 
     def sum(self) -> T:
         """Return a sum of all elements of this array."""
-        if isinstance(self._elements[0], _QuantityBase):
-            return type(self._elements[0])(np.sum(self.to_numpy(type(self._elements[0]).BASE_UNIT)))  # type: ignore
-        return np.sum(self.to_numpy())
+        summed_up_elements = self._elements[0]
+        for element in self._elements[1:]:
+            summed_up_elements += element
+        return summed_up_elements
 
     @classmethod
     def __class_getitem__(cls, *_: object) -> type:
