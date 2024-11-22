@@ -47,6 +47,13 @@ class Vector(Generic[T]):
 
         return Vector(np.tile(element, length))
 
+    @classmethod
+    def from_numpy(
+        cls, array: np.ndarray, element_class: type[_QuantityBase], unit: str
+    ) -> Vector[_QuantityBase]:
+        """Construct a quantity vector from a numpy array."""
+        return Vector([element_class(**{unit: elem}) for elem in array])
+
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
         if isinstance(self._elements[0], _QuantityBase):
