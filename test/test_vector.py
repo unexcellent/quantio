@@ -231,5 +231,17 @@ def test_tile__list():
     assert actual == Vector([0, 1, 2, 0, 1, 2])
 
 
+def test_sum__float():
+    actual = Vector[float]([0, 1, 2, 3]).sum()
+    assert actual == 6
+
+
+def test_sum__quantity():
+    actual = Vector[Length](
+        [Length(meters=0), Length(meters=1), Length(meters=2), Length(meters=3)]
+    ).sum()
+    assert actual == Length(meters=6)
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

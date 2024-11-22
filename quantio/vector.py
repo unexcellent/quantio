@@ -56,6 +56,12 @@ class Vector(Generic[T]):
 
         return np.array([float(element) for element in self._elements])
 
+    def sum(self) -> T:
+        """Return a sum of all elements of this array."""
+        if isinstance(self._elements[0], _QuantityBase):
+            return type(self._elements[0])(np.sum(self.to_numpy(type(self._elements[0]).BASE_UNIT)))  # type: ignore
+        return np.sum(self.to_numpy())
+
     @classmethod
     def __class_getitem__(cls, *_: object) -> type:
         """Return this class for type hinting."""
