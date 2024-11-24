@@ -4,8 +4,8 @@ from typing import Generic, TypeVar
 
 import numpy as np
 
-from ._quantity_base import _QuantityBase
 from .exceptions import NoUnitSpecifiedError
+from .quantities import Quantity
 
 T = TypeVar("T")
 
@@ -21,14 +21,14 @@ class Vector(Generic[T]):
     @classmethod
     def arange(cls, start: T, stop: T, step: T) -> Vector[T]:
         """Return evenly spaced values within a given interval."""
-        if isinstance(start, _QuantityBase):
+        if isinstance(start, Quantity):
             start_val = start._base_value
 
-            if not isinstance(stop, _QuantityBase):
+            if not isinstance(stop, Quantity):
                 raise TypeError
             stop_val = stop._base_value
 
-            if not isinstance(step, _QuantityBase):
+            if not isinstance(step, Quantity):
                 raise TypeError
             step_val = step._base_value
 
@@ -49,14 +49,14 @@ class Vector(Generic[T]):
 
     @classmethod
     def from_numpy(
-        cls, array: np.ndarray, element_class: type[_QuantityBase], unit: str
-    ) -> Vector[_QuantityBase]:
+        cls, array: np.ndarray, element_class: type[Quantity], unit: str
+    ) -> Vector[Quantity]:
         """Construct a quantity vector from a numpy array."""
         return Vector([element_class(**{unit: elem}) for elem in array])
 
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
-        if isinstance(self._elements[0], _QuantityBase):
+        if isinstance(self._elements[0], Quantity):
             if unit is None:
                 raise NoUnitSpecifiedError
             return np.array([getattr(element, unit) for element in self._elements])
@@ -95,7 +95,7 @@ class Vector(Generic[T]):
 
     def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
-        if isinstance(self._elements[0], _QuantityBase):
+        if isinstance(self._elements[0], Quantity):
             self_to_numpy = self.to_numpy(self._elements[0].BASE_UNIT)
         else:
             self_to_numpy = self.to_numpy()
@@ -103,7 +103,7 @@ class Vector(Generic[T]):
 
     def __truediv__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multipy this vector with either another vector or a scalar."""
-        if isinstance(self._elements[0], _QuantityBase):
+        if isinstance(self._elements[0], Quantity):
             self_to_numpy = self.to_numpy(self._elements[0].BASE_UNIT)
         else:
             self_to_numpy = self.to_numpy()
@@ -128,11 +128,11 @@ def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
     if isinstance(other, (float, int)):
         return np.array([other])
 
-    if isinstance(other, _QuantityBase):
+    if isinstance(other, Quantity):
         return np.array([other._base_value])
 
     if isinstance(other, Vector):
-        if isinstance(other._elements[0], _QuantityBase):
+        if isinstance(other._elements[0], Quantity):
             return other.to_numpy(other._elements[0].BASE_UNIT)
         return other.to_numpy()
 

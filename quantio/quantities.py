@@ -1,9 +1,46 @@
 from __future__ import annotations
 
-from ._quantity_base import _QuantityBase
+from abc import ABC
+
+from .exceptions import CanNotAddTypesError, CanNotSubtractTypesError
 
 
-class Acceleration(_QuantityBase):
+class Quantity(ABC):
+    """Parent class to all quantities."""
+
+    _base_value: float
+    "The base unit of the quantity."
+
+    BASE_UNIT: str
+    "Name of the unit with a factor of 1."
+
+    def __eq__(self, other: object) -> bool:
+        """Assess if this object is the same as another."""
+        if isinstance(other, type(self)):
+            return self._base_value == other._base_value
+
+        return False
+
+    def __add__(self, other: Quantity) -> Quantity:
+        """Add two quantities of the same type."""
+        if type(self) is not type(other):
+            raise CanNotAddTypesError(self.__class__.__name__, other.__class__.__name__)
+
+        result = type(self)()
+        result._base_value = self._base_value + other._base_value
+        return result
+
+    def __sub__(self, other: Quantity) -> Quantity:
+        """Subtract two quantities of the same type."""
+        if type(self) is not type(other):
+            raise CanNotSubtractTypesError(self.__class__.__name__, other.__class__.__name__)
+
+        result = type(self)()
+        result._base_value = self._base_value - other._base_value
+        return result
+
+
+class Acceleration(Quantity):
     """Rate of change of velocity."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -38,7 +75,7 @@ class Acceleration(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Angle(_QuantityBase):
+class Angle(Quantity):
     """The figure formed by two rays."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -73,7 +110,7 @@ class Angle(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class AngularVelocity(_QuantityBase):
+class AngularVelocity(Quantity):
     """The change in angle per time."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -108,7 +145,7 @@ class AngularVelocity(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Area(_QuantityBase):
+class Area(Quantity):
     """The two-dimensional extent of an object."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -185,7 +222,7 @@ class Area(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class ElectricalResistance(_QuantityBase):
+class ElectricalResistance(Quantity):
     """A measure of an objects opposition to the flow of electric current."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -241,7 +278,7 @@ class ElectricalResistance(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class ElectricCurrent(_QuantityBase):
+class ElectricCurrent(Quantity):
     """The flow of charged particles moving through an electrical conductor or space."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -297,7 +334,7 @@ class ElectricCurrent(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Energy(_QuantityBase):
+class Energy(Quantity):
     """Energy describes the ability of an object to perform work."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -353,7 +390,7 @@ class Energy(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Frequency(_QuantityBase):
+class Frequency(Quantity):
     """The number of occurrences of a repeating event per unit of time."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -402,7 +439,7 @@ class Frequency(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Length(_QuantityBase):
+class Length(Quantity):
     """The one-dimensional extent of an object or the distance between two points."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -479,7 +516,7 @@ class Length(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Mass(_QuantityBase):
+class Mass(Quantity):
     """A measure of resistance to acceleration."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -549,7 +586,7 @@ class Mass(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Power(_QuantityBase):
+class Power(Quantity):
     """The amount of energy transferred or converted per unit time."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -605,7 +642,7 @@ class Power(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Time(_QuantityBase):
+class Time(Quantity):
     """The duration of an event."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -668,7 +705,7 @@ class Time(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Velocity(_QuantityBase):
+class Velocity(Quantity):
     """Distance per time."""
 
     # --- This part is auto generated. Do not change manually. ---
@@ -710,7 +747,7 @@ class Velocity(_QuantityBase):
     # --- End of auto generated part. ---
 
 
-class Voltage(_QuantityBase):
+class Voltage(Quantity):
     """The difference in electric potential between two points."""
 
     # --- This part is auto generated. Do not change manually. ---
