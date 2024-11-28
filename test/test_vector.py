@@ -249,5 +249,25 @@ def test_from_numpy__quantity():
     assert actual == Vector([Length(meters=0), Length(meters=1), Length(meters=2)])
 
 
+def test_str__float():
+    actual = str(Vector[float]([0.0, 1.0]))
+    assert actual == "Vector([0.0, 1.0])"
+
+
+def test_str__quantity():
+    actual = str(Vector[Time]([Time(seconds=1.0), Time(seconds=1.0)]))
+    assert actual == "Vector([Time(seconds=1.0), Time(seconds=1.0)])"
+
+
+def test_repr__float():
+    vector = Vector[float]([0.0, 1.0])
+    assert vector.__str__() == vector.__repr__()
+
+
+def test_repr__quantity():
+    vector = Vector[Time]([Time(seconds=1.0), Time(seconds=1.0)])
+    assert vector.__str__() == vector.__repr__()
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

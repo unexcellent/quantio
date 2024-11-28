@@ -39,6 +39,10 @@ class Quantity(ABC):
         result._base_value = self._base_value - other._base_value
         return result
 
+    def __repr__(self) -> str:
+        """Return an unambiguous representation of this quantity."""
+        return self.__str__()
+
 
 class Acceleration(Quantity):
     """Rate of change of velocity."""
@@ -71,6 +75,10 @@ class Acceleration(Quantity):
     def zero(cls) -> Acceleration:
         """Create a Acceleration with a value of zero."""
         return Acceleration()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Acceleration(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -107,6 +115,10 @@ class Angle(Quantity):
         """Create a Angle with a value of zero."""
         return Angle()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Angle(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -141,6 +153,10 @@ class AngularVelocity(Quantity):
     def zero(cls) -> AngularVelocity:
         """Create a AngularVelocity with a value of zero."""
         return AngularVelocity()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "AngularVelocity(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -219,6 +235,10 @@ class Area(Quantity):
         """Create a Area with a value of zero."""
         return Area()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Area(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -274,6 +294,10 @@ class ElectricalResistance(Quantity):
     def zero(cls) -> ElectricalResistance:
         """Create a ElectricalResistance with a value of zero."""
         return ElectricalResistance()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "ElectricalResistance(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -331,6 +355,10 @@ class ElectricCurrent(Quantity):
         """Create a ElectricCurrent with a value of zero."""
         return ElectricCurrent()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "ElectricCurrent(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -387,6 +415,10 @@ class Energy(Quantity):
         """Create a Energy with a value of zero."""
         return Energy()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Energy(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -435,6 +467,10 @@ class Frequency(Quantity):
     def zero(cls) -> Frequency:
         """Create a Frequency with a value of zero."""
         return Frequency()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Frequency(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -513,6 +549,10 @@ class Length(Quantity):
         """Create a Length with a value of zero."""
         return Length()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Length(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -583,6 +623,10 @@ class Mass(Quantity):
         """Create a Mass with a value of zero."""
         return Mass()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Mass(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -638,6 +682,10 @@ class Power(Quantity):
     def zero(cls) -> Power:
         """Create a Power with a value of zero."""
         return Power()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Power(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -702,6 +750,10 @@ class Time(Quantity):
         """Create a Time with a value of zero."""
         return Time()
 
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Time(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
     # --- End of auto generated part. ---
 
 
@@ -743,6 +795,10 @@ class Velocity(Quantity):
     def zero(cls) -> Velocity:
         """Create a Velocity with a value of zero."""
         return Velocity()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Velocity(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---
 
@@ -799,5 +855,9 @@ class Voltage(Quantity):
     def zero(cls) -> Voltage:
         """Create a Voltage with a value of zero."""
         return Voltage()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Voltage(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
 
     # --- End of auto generated part. ---

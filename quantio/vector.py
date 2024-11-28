@@ -123,6 +123,18 @@ class Vector(Generic[T]):
         """Return the number of elements in this vector."""
         return self._elements.__len__()
 
+    def __str__(self) -> str:
+        """Display this vector as a string for printing."""
+        elements_str = ""
+        for element in self._elements:
+            elements_str += f"{element}, "
+        elements_str = elements_str[:-2]
+        return f"Vector([{elements_str}])"
+
+    def __repr__(self) -> str:
+        """Return an unambiguous representation of this vector."""
+        return self.__str__()
+
 
 def _other_to_numpy(other: Vector | np.ndarray | float) -> np.ndarray:
     if isinstance(other, (float, int)):
