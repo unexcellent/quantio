@@ -135,6 +135,12 @@ if __name__ == "__main__":
             "square_millimeters": "10 ** (-3 * 2)",
             "square_micrometers": "10 ** (-6 * 2)",
         },
+        "Density": {
+            "grams_per_cubic_meter": "10 ** 3",
+            "kilograms_per_cubic_meter": "1",
+            "kilograms_per_liter": "10 ** -3",
+            "grams_per_milliliter": "10 ** -3",
+        },
         "ElectricalResistance": {
             "gigaohm": "10**9",
             "megaohm": "10**6",

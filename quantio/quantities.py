@@ -242,6 +242,59 @@ class Area(Quantity):
     # --- End of auto generated part. ---
 
 
+class Density(Quantity):
+    """A substance's mass per unit of volume."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "kilograms_per_cubic_meter"
+
+    @property
+    def grams_per_cubic_meter(self) -> float:
+        """The density in grams per cubic meter."""
+        return self._base_value / 10**3
+
+    @property
+    def kilograms_per_cubic_meter(self) -> float:
+        """The density in kilograms per cubic meter."""
+        return self._base_value / 1
+
+    @property
+    def kilograms_per_liter(self) -> float:
+        """The density in kilograms per liter."""
+        return self._base_value / 10**-3
+
+    @property
+    def grams_per_milliliter(self) -> float:
+        """The density in grams per milliliter."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        grams_per_cubic_meter: float = 0.0,
+        kilograms_per_cubic_meter: float = 0.0,
+        kilograms_per_liter: float = 0.0,
+        grams_per_milliliter: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += grams_per_cubic_meter * 10**3
+        self._base_value += kilograms_per_cubic_meter * 1
+        self._base_value += kilograms_per_liter * 10**-3
+        self._base_value += grams_per_milliliter * 10**-3
+
+    @classmethod
+    def zero(cls) -> Density:
+        """Create a Density with a value of zero."""
+        return Density()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Density(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
+    # --- End of auto generated part. ---
+
+
 class ElectricalResistance(Quantity):
     """A measure of an objects opposition to the flow of electric current."""
 
