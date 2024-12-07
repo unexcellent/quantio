@@ -690,6 +690,80 @@ class Power(Quantity):
     # --- End of auto generated part. ---
 
 
+class Pressure(Quantity):
+    """The amount of force per unit area."""
+
+    # --- This part is auto generated. Do not change manually. ---
+
+    BASE_UNIT = "kilopascal"
+
+    @property
+    def terapascal(self) -> float:
+        """The pressure in terapascal."""
+        return self._base_value / 10**9
+
+    @property
+    def gigapascal(self) -> float:
+        """The pressure in gigapascal."""
+        return self._base_value / 10**6
+
+    @property
+    def megapascal(self) -> float:
+        """The pressure in megapascal."""
+        return self._base_value / 10**3
+
+    @property
+    def kilopascal(self) -> float:
+        """The pressure in kilopascal."""
+        return self._base_value / 1
+
+    @property
+    def bar(self) -> float:
+        """The pressure in bar."""
+        return self._base_value / 10**-2
+
+    @property
+    def pascal(self) -> float:
+        """The pressure in pascal."""
+        return self._base_value / 10**-3
+
+    @property
+    def millipascal(self) -> float:
+        """The pressure in millipascal."""
+        return self._base_value / 10**-3
+
+    def __init__(
+        self,
+        _base_value: float = 0.0,
+        terapascal: float = 0.0,
+        gigapascal: float = 0.0,
+        megapascal: float = 0.0,
+        kilopascal: float = 0.0,
+        bar: float = 0.0,
+        pascal: float = 0.0,
+        millipascal: float = 0.0,
+    ) -> None:
+        self._base_value = _base_value
+        self._base_value += terapascal * 10**9
+        self._base_value += gigapascal * 10**6
+        self._base_value += megapascal * 10**3
+        self._base_value += kilopascal * 1
+        self._base_value += bar * 10**-2
+        self._base_value += pascal * 10**-3
+        self._base_value += millipascal * 10**-3
+
+    @classmethod
+    def zero(cls) -> Pressure:
+        """Create a Pressure with a value of zero."""
+        return Pressure()
+
+    def __str__(self) -> str:
+        """Display this quantity as a string for printing."""
+        return "Pressure(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"
+
+    # --- End of auto generated part. ---
+
+
 class Time(Quantity):
     """The duration of an event."""
 

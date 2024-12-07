@@ -188,6 +188,15 @@ if __name__ == "__main__":
             "watts": "1",
             "milliwatts": "10**-3",
         },
+        "Pressure": {
+            "terapascal": "10**9",
+            "gigapascal": "10**6",
+            "megapascal": "10**3",
+            "kilopascal": "1",
+            "bar": "10**-2",
+            "pascal": "10**-3",
+            "millipascal": "10**-3",
+        },
         "Time": {
             "hours": "60 * 60",
             "minutes": "60",
