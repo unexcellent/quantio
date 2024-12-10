@@ -70,7 +70,16 @@ class Vector(Generic[T]):
         cls, array: np.ndarray, element_class: type[Quantity], unit: str
     ) -> Vector[Quantity]:
         """Construct a quantity vector from a numpy array."""
-        return Vector([element_class(**{unit: elem}) for elem in array])
+        vector: Vector[Quantity] = Vector([0])
+
+        if unit == element_class.BASE_UNIT:
+            vector._elements = array
+        else:
+            conversion_factor = getattr(element_class(1), unit)
+            vector._elements = array / conversion_factor
+
+        vector._quantitiy = element_class
+        return vector
 
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
