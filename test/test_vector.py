@@ -14,12 +14,12 @@ from quantio import (
 
 def test_init():
     vec: Vector[Length] = Vector([Length.zero(), Length.zero()])
-    assert np.all(vec._elements == np.array([Length.zero(), Length.zero()]))
+    assert np.all(vec.elements == np.array([Length.zero(), Length.zero()]))
 
 
 def test_init_with_type_hint():
     vec = Vector[Length]([Length.zero(), Length.zero()])
-    assert np.all(vec._elements == np.array([Length.zero(), Length.zero()]))
+    assert np.all(vec.elements == np.array([Length.zero(), Length.zero()]))
 
 
 def test_indexing():
@@ -185,7 +185,7 @@ def test_to_numpy__quantity_no_unit():
 
 def test_arange__float():
     actual = Vector[float].arange(start=0.0, stop=5.0, step=2)
-    assert actual == Vector([0, 2, 4])
+    assert actual == Vector([0.0, 2.0, 4.0])
 
 
 def test_arange__quantity():

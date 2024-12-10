@@ -20,3 +20,10 @@ class NoUnitSpecifiedError(TypeError):
             "When a vector with quantity elements is converted into a numpy array, a unit must be "
             "specified."
         )
+
+
+class EmptyVectorElementsError(ValueError):
+    """Raised when a Vector is initialized with an empty list."""
+
+    def __init__(self) -> None:
+        super().__init__("Can not instantiate an empty Vector.")
