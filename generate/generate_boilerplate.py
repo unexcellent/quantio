@@ -67,26 +67,30 @@ def _generate_properties(current_class: str, units: dict[str, str]) -> list[str]
     code = []
 
     for unit, factor in units.items():
-        code.append(" " * 4 + "@property")
-        code.append(" " * 4 + f"def {unit}(self) -> float:")
-        code.append(" " * 8 + f'"""The {current_class.lower()} in {unit.replace("_", " ")}."""')
-        code.append(" " * 8 + f"return self._base_value / {factor}")
+        code.append(_indent("@property", 1))
+        code.append(_indent(f"def {unit}(self) -> float:", 1))
+        code.append(_indent(f'"""The {current_class.lower()} in {unit.replace("_", " ")}."""', 2))
+        code.append(_indent(f"return self._base_value / {factor}", 2))
         code.append("")
 
     return code
 
 
 def _generate_init(units: dict[str, str]) -> list[str]:
-    code = [" " * 4 + "def __init__(", " " * 8 + "self,", " " * 8 + "_base_value: float = 0.0,"]
+    code = [
+        _indent("def __init__(", 1),
+        _indent("self,", 2),
+        _indent("_base_value: float = 0.0,", 2),
+    ]
 
     for unit in units:
-        code.append(" " * 8 + f"{unit}: float = 0.0,")
+        code.append(_indent(f"{unit}: float = 0.0,", 2))
 
-    code.append(" " * 4 + ") -> None:")
-    code.append(" " * 8 + "self._base_value = _base_value")
+    code.append(_indent(") -> None:", 1))
+    code.append(_indent("self._base_value = _base_value", 2))
 
     for unit, factor in units.items():
-        code.append(" " * 8 + f"self._base_value += {unit} * {factor}")
+        code.append(_indent(f"self._base_value += {unit} * {factor}", 2))
 
     code.append("")
     return code
@@ -94,21 +98,27 @@ def _generate_init(units: dict[str, str]) -> list[str]:
 
 def _generat_zero_function(current_class: str) -> list[str]:
     return [
-        " " * 4 + "@classmethod",
-        " " * 4 + f"def zero(cls) -> {current_class}:",
-        " " * 8 + f'"""Create a {current_class} with a value of zero."""',
-        " " * 8 + f"return {current_class}()",
+        _indent("@classmethod", 1),
+        _indent(f"def zero(cls) -> {current_class}:", 1),
+        _indent(f'"""Create a {current_class} with a value of zero."""', 2),
+        _indent(f"return {current_class}()", 2),
         "",
     ]
 
 
 def _generat_str_function(current_class: str) -> list[str]:
     return [
-        " " * 4 + f"def __str__(self) -> str:",
-        " " * 8 + f'"""Display this quantity as a string for printing."""',
-        " " * 8 + f'return "{current_class}(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"',
+        _indent(f"def __str__(self) -> str:", 1),
+        _indent(f'"""Display this quantity as a string for printing."""', 2),
+        _indent(
+            f'return "{current_class}(" + self.BASE_UNIT + "=" + str(self._base_value) + ")"', 2
+        ),
         "",
     ]
+
+
+def _indent(text: str, number_of_indents: int) -> str:
+    return " " * 4 * number_of_indents + text
 
 
 if __name__ == "__main__":
