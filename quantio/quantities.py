@@ -64,12 +64,14 @@ class Acceleration(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        meters_per_square_second: float = 0.0,
-        g_force: float = 0.0,
+        meters_per_square_second: float | None = None,
+        g_force: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += meters_per_square_second * 1
-        self._base_value += g_force * (1 / 9.8)
+        if meters_per_square_second is not None:
+            self._base_value += meters_per_square_second * 1
+        if g_force is not None:
+            self._base_value += g_force * (1 / 9.8)
 
     @classmethod
     def zero(cls) -> Acceleration:
@@ -103,12 +105,14 @@ class Angle(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        degrees: float = 0.0,
-        radians: float = 0.0,
+        degrees: float | None = None,
+        radians: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += degrees * (3.141592653589793 / 180)
-        self._base_value += radians * 1
+        if degrees is not None:
+            self._base_value += degrees * (3.141592653589793 / 180)
+        if radians is not None:
+            self._base_value += radians * 1
 
     @classmethod
     def zero(cls) -> Angle:
@@ -142,12 +146,14 @@ class AngularVelocity(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        degrees_per_second: float = 0.0,
-        radians_per_second: float = 0.0,
+        degrees_per_second: float | None = None,
+        radians_per_second: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += degrees_per_second * (3.141592653589793 / 180)
-        self._base_value += radians_per_second * 1
+        if degrees_per_second is not None:
+            self._base_value += degrees_per_second * (3.141592653589793 / 180)
+        if radians_per_second is not None:
+            self._base_value += radians_per_second * 1
 
     @classmethod
     def zero(cls) -> AngularVelocity:
@@ -211,24 +217,32 @@ class Area(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        square_miles: float = 0.0,
-        square_kilometers: float = 0.0,
-        square_meters: float = 0.0,
-        square_feet: float = 0.0,
-        square_inches: float = 0.0,
-        square_centimeters: float = 0.0,
-        square_millimeters: float = 0.0,
-        square_micrometers: float = 0.0,
+        square_miles: float | None = None,
+        square_kilometers: float | None = None,
+        square_meters: float | None = None,
+        square_feet: float | None = None,
+        square_inches: float | None = None,
+        square_centimeters: float | None = None,
+        square_millimeters: float | None = None,
+        square_micrometers: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += square_miles * 1609.34**2
-        self._base_value += square_kilometers * 10 ** (3 * 2)
-        self._base_value += square_meters * 1
-        self._base_value += square_feet * 0.3048**2
-        self._base_value += square_inches * 0.0254**2
-        self._base_value += square_centimeters * 10 ** (-2 * 2)
-        self._base_value += square_millimeters * 10 ** (-3 * 2)
-        self._base_value += square_micrometers * 10 ** (-6 * 2)
+        if square_miles is not None:
+            self._base_value += square_miles * 1609.34**2
+        if square_kilometers is not None:
+            self._base_value += square_kilometers * 10 ** (3 * 2)
+        if square_meters is not None:
+            self._base_value += square_meters * 1
+        if square_feet is not None:
+            self._base_value += square_feet * 0.3048**2
+        if square_inches is not None:
+            self._base_value += square_inches * 0.0254**2
+        if square_centimeters is not None:
+            self._base_value += square_centimeters * 10 ** (-2 * 2)
+        if square_millimeters is not None:
+            self._base_value += square_millimeters * 10 ** (-3 * 2)
+        if square_micrometers is not None:
+            self._base_value += square_micrometers * 10 ** (-6 * 2)
 
     @classmethod
     def zero(cls) -> Area:
@@ -272,16 +286,20 @@ class Density(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        grams_per_cubic_meter: float = 0.0,
-        kilograms_per_cubic_meter: float = 0.0,
-        kilograms_per_liter: float = 0.0,
-        grams_per_milliliter: float = 0.0,
+        grams_per_cubic_meter: float | None = None,
+        kilograms_per_cubic_meter: float | None = None,
+        kilograms_per_liter: float | None = None,
+        grams_per_milliliter: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += grams_per_cubic_meter * 10**3
-        self._base_value += kilograms_per_cubic_meter * 1
-        self._base_value += kilograms_per_liter * 10**-3
-        self._base_value += grams_per_milliliter * 10**-3
+        if grams_per_cubic_meter is not None:
+            self._base_value += grams_per_cubic_meter * 10**3
+        if kilograms_per_cubic_meter is not None:
+            self._base_value += kilograms_per_cubic_meter * 1
+        if kilograms_per_liter is not None:
+            self._base_value += kilograms_per_liter * 10**-3
+        if grams_per_milliliter is not None:
+            self._base_value += grams_per_milliliter * 10**-3
 
     @classmethod
     def zero(cls) -> Density:
@@ -330,18 +348,23 @@ class ElectricalResistance(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigaohm: float = 0.0,
-        megaohm: float = 0.0,
-        kiloohm: float = 0.0,
-        ohm: float = 0.0,
-        milliohm: float = 0.0,
+        gigaohm: float | None = None,
+        megaohm: float | None = None,
+        kiloohm: float | None = None,
+        ohm: float | None = None,
+        milliohm: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigaohm * 10**9
-        self._base_value += megaohm * 10**6
-        self._base_value += kiloohm * 10**3
-        self._base_value += ohm * 1
-        self._base_value += milliohm * 10**-3
+        if gigaohm is not None:
+            self._base_value += gigaohm * 10**9
+        if megaohm is not None:
+            self._base_value += megaohm * 10**6
+        if kiloohm is not None:
+            self._base_value += kiloohm * 10**3
+        if ohm is not None:
+            self._base_value += ohm * 1
+        if milliohm is not None:
+            self._base_value += milliohm * 10**-3
 
     @classmethod
     def zero(cls) -> ElectricalResistance:
@@ -390,18 +413,23 @@ class ElectricCurrent(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigaamperes: float = 0.0,
-        megaamperes: float = 0.0,
-        kiloamperes: float = 0.0,
-        amperes: float = 0.0,
-        milliamperes: float = 0.0,
+        gigaamperes: float | None = None,
+        megaamperes: float | None = None,
+        kiloamperes: float | None = None,
+        amperes: float | None = None,
+        milliamperes: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigaamperes * 10**9
-        self._base_value += megaamperes * 10**6
-        self._base_value += kiloamperes * 10**3
-        self._base_value += amperes * 1
-        self._base_value += milliamperes * 10**-3
+        if gigaamperes is not None:
+            self._base_value += gigaamperes * 10**9
+        if megaamperes is not None:
+            self._base_value += megaamperes * 10**6
+        if kiloamperes is not None:
+            self._base_value += kiloamperes * 10**3
+        if amperes is not None:
+            self._base_value += amperes * 1
+        if milliamperes is not None:
+            self._base_value += milliamperes * 10**-3
 
     @classmethod
     def zero(cls) -> ElectricCurrent:
@@ -450,18 +478,23 @@ class Energy(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigajoules: float = 0.0,
-        megajoules: float = 0.0,
-        kilojoules: float = 0.0,
-        joules: float = 0.0,
-        millijoules: float = 0.0,
+        gigajoules: float | None = None,
+        megajoules: float | None = None,
+        kilojoules: float | None = None,
+        joules: float | None = None,
+        millijoules: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigajoules * 10**9
-        self._base_value += megajoules * 10**6
-        self._base_value += kilojoules * 10**3
-        self._base_value += joules * 1
-        self._base_value += millijoules * 10**-3
+        if gigajoules is not None:
+            self._base_value += gigajoules * 10**9
+        if megajoules is not None:
+            self._base_value += megajoules * 10**6
+        if kilojoules is not None:
+            self._base_value += kilojoules * 10**3
+        if joules is not None:
+            self._base_value += joules * 1
+        if millijoules is not None:
+            self._base_value += millijoules * 10**-3
 
     @classmethod
     def zero(cls) -> Energy:
@@ -505,16 +538,20 @@ class Frequency(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigahertz: float = 0.0,
-        megahertz: float = 0.0,
-        kilohertz: float = 0.0,
-        hertz: float = 0.0,
+        gigahertz: float | None = None,
+        megahertz: float | None = None,
+        kilohertz: float | None = None,
+        hertz: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigahertz * 10**9
-        self._base_value += megahertz * 10**6
-        self._base_value += kilohertz * 10**3
-        self._base_value += hertz * 1
+        if gigahertz is not None:
+            self._base_value += gigahertz * 10**9
+        if megahertz is not None:
+            self._base_value += megahertz * 10**6
+        if kilohertz is not None:
+            self._base_value += kilohertz * 10**3
+        if hertz is not None:
+            self._base_value += hertz * 1
 
     @classmethod
     def zero(cls) -> Frequency:
@@ -578,24 +615,32 @@ class Length(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        miles: float = 0.0,
-        kilometers: float = 0.0,
-        meters: float = 0.0,
-        feet: float = 0.0,
-        inches: float = 0.0,
-        centimeters: float = 0.0,
-        millimeters: float = 0.0,
-        micrometers: float = 0.0,
+        miles: float | None = None,
+        kilometers: float | None = None,
+        meters: float | None = None,
+        feet: float | None = None,
+        inches: float | None = None,
+        centimeters: float | None = None,
+        millimeters: float | None = None,
+        micrometers: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += miles * 1609.34
-        self._base_value += kilometers * 10**3
-        self._base_value += meters * 1
-        self._base_value += feet * 0.3048
-        self._base_value += inches * 0.0254
-        self._base_value += centimeters * 10**-2
-        self._base_value += millimeters * 10**-3
-        self._base_value += micrometers * 10**-6
+        if miles is not None:
+            self._base_value += miles * 1609.34
+        if kilometers is not None:
+            self._base_value += kilometers * 10**3
+        if meters is not None:
+            self._base_value += meters * 1
+        if feet is not None:
+            self._base_value += feet * 0.3048
+        if inches is not None:
+            self._base_value += inches * 0.0254
+        if centimeters is not None:
+            self._base_value += centimeters * 10**-2
+        if millimeters is not None:
+            self._base_value += millimeters * 10**-3
+        if micrometers is not None:
+            self._base_value += micrometers * 10**-6
 
     @classmethod
     def zero(cls) -> Length:
@@ -654,22 +699,29 @@ class Mass(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        tonnes: float = 0.0,
-        kilograms: float = 0.0,
-        pounds: float = 0.0,
-        ounces: float = 0.0,
-        grams: float = 0.0,
-        milligrams: float = 0.0,
-        micrograms: float = 0.0,
+        tonnes: float | None = None,
+        kilograms: float | None = None,
+        pounds: float | None = None,
+        ounces: float | None = None,
+        grams: float | None = None,
+        milligrams: float | None = None,
+        micrograms: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += tonnes * 10**3
-        self._base_value += kilograms * 1
-        self._base_value += pounds * (1 / 2.20462)
-        self._base_value += ounces * (1 / 35.27396)
-        self._base_value += grams * 10**-3
-        self._base_value += milligrams * 10**-6
-        self._base_value += micrograms * 10**-9
+        if tonnes is not None:
+            self._base_value += tonnes * 10**3
+        if kilograms is not None:
+            self._base_value += kilograms * 1
+        if pounds is not None:
+            self._base_value += pounds * (1 / 2.20462)
+        if ounces is not None:
+            self._base_value += ounces * (1 / 35.27396)
+        if grams is not None:
+            self._base_value += grams * 10**-3
+        if milligrams is not None:
+            self._base_value += milligrams * 10**-6
+        if micrograms is not None:
+            self._base_value += micrograms * 10**-9
 
     @classmethod
     def zero(cls) -> Mass:
@@ -718,18 +770,23 @@ class Power(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigawatts: float = 0.0,
-        megawatts: float = 0.0,
-        kilowatts: float = 0.0,
-        watts: float = 0.0,
-        milliwatts: float = 0.0,
+        gigawatts: float | None = None,
+        megawatts: float | None = None,
+        kilowatts: float | None = None,
+        watts: float | None = None,
+        milliwatts: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigawatts * 10**9
-        self._base_value += megawatts * 10**6
-        self._base_value += kilowatts * 10**3
-        self._base_value += watts * 1
-        self._base_value += milliwatts * 10**-3
+        if gigawatts is not None:
+            self._base_value += gigawatts * 10**9
+        if megawatts is not None:
+            self._base_value += megawatts * 10**6
+        if kilowatts is not None:
+            self._base_value += kilowatts * 10**3
+        if watts is not None:
+            self._base_value += watts * 1
+        if milliwatts is not None:
+            self._base_value += milliwatts * 10**-3
 
     @classmethod
     def zero(cls) -> Power:
@@ -788,22 +845,29 @@ class Pressure(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        terapascal: float = 0.0,
-        gigapascal: float = 0.0,
-        megapascal: float = 0.0,
-        kilopascal: float = 0.0,
-        bar: float = 0.0,
-        pascal: float = 0.0,
-        millipascal: float = 0.0,
+        terapascal: float | None = None,
+        gigapascal: float | None = None,
+        megapascal: float | None = None,
+        kilopascal: float | None = None,
+        bar: float | None = None,
+        pascal: float | None = None,
+        millipascal: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += terapascal * 10**9
-        self._base_value += gigapascal * 10**6
-        self._base_value += megapascal * 10**3
-        self._base_value += kilopascal * 1
-        self._base_value += bar * 10**-2
-        self._base_value += pascal * 10**-3
-        self._base_value += millipascal * 10**-3
+        if terapascal is not None:
+            self._base_value += terapascal * 10**9
+        if gigapascal is not None:
+            self._base_value += gigapascal * 10**6
+        if megapascal is not None:
+            self._base_value += megapascal * 10**3
+        if kilopascal is not None:
+            self._base_value += kilopascal * 1
+        if bar is not None:
+            self._base_value += bar * 10**-2
+        if pascal is not None:
+            self._base_value += pascal * 10**-3
+        if millipascal is not None:
+            self._base_value += millipascal * 10**-3
 
     @classmethod
     def zero(cls) -> Pressure:
@@ -857,20 +921,26 @@ class Time(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        hours: float = 0.0,
-        minutes: float = 0.0,
-        seconds: float = 0.0,
-        milliseconds: float = 0.0,
-        microseconds: float = 0.0,
-        nanoseconds: float = 0.0,
+        hours: float | None = None,
+        minutes: float | None = None,
+        seconds: float | None = None,
+        milliseconds: float | None = None,
+        microseconds: float | None = None,
+        nanoseconds: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += hours * 60 * 60
-        self._base_value += minutes * 60
-        self._base_value += seconds * 1
-        self._base_value += milliseconds * 10**-3
-        self._base_value += microseconds * 10**-6
-        self._base_value += nanoseconds * 10**-9
+        if hours is not None:
+            self._base_value += hours * 60 * 60
+        if minutes is not None:
+            self._base_value += minutes * 60
+        if seconds is not None:
+            self._base_value += seconds * 1
+        if milliseconds is not None:
+            self._base_value += milliseconds * 10**-3
+        if microseconds is not None:
+            self._base_value += microseconds * 10**-6
+        if nanoseconds is not None:
+            self._base_value += nanoseconds * 10**-9
 
     @classmethod
     def zero(cls) -> Time:
@@ -909,14 +979,17 @@ class Velocity(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        meters_per_second: float = 0.0,
-        kilometers_per_hour: float = 0.0,
-        miles_per_hour: float = 0.0,
+        meters_per_second: float | None = None,
+        kilometers_per_hour: float | None = None,
+        miles_per_hour: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += meters_per_second * 1
-        self._base_value += kilometers_per_hour * (1 / 3.6)
-        self._base_value += miles_per_hour * (1 / 2.23694)
+        if meters_per_second is not None:
+            self._base_value += meters_per_second * 1
+        if kilometers_per_hour is not None:
+            self._base_value += kilometers_per_hour * (1 / 3.6)
+        if miles_per_hour is not None:
+            self._base_value += miles_per_hour * (1 / 2.23694)
 
     @classmethod
     def zero(cls) -> Velocity:
@@ -965,18 +1038,23 @@ class Voltage(Quantity):
     def __init__(
         self,
         _base_value: float = 0.0,
-        gigavolts: float = 0.0,
-        megavolts: float = 0.0,
-        kilovolts: float = 0.0,
-        volts: float = 0.0,
-        millivolts: float = 0.0,
+        gigavolts: float | None = None,
+        megavolts: float | None = None,
+        kilovolts: float | None = None,
+        volts: float | None = None,
+        millivolts: float | None = None,
     ) -> None:
         self._base_value = _base_value
-        self._base_value += gigavolts * 10**9
-        self._base_value += megavolts * 10**6
-        self._base_value += kilovolts * 10**3
-        self._base_value += volts * 1
-        self._base_value += millivolts * 10**-3
+        if gigavolts is not None:
+            self._base_value += gigavolts * 10**9
+        if megavolts is not None:
+            self._base_value += megavolts * 10**6
+        if kilovolts is not None:
+            self._base_value += kilovolts * 10**3
+        if volts is not None:
+            self._base_value += volts * 1
+        if millivolts is not None:
+            self._base_value += millivolts * 10**-3
 
     @classmethod
     def zero(cls) -> Voltage:

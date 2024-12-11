@@ -84,13 +84,14 @@ def _generate_init(units: dict[str, str]) -> list[str]:
     ]
 
     for unit in units:
-        code.append(_indent(f"{unit}: float = 0.0,", 2))
+        code.append(_indent(f"{unit}: float | None = None,", 2))
 
     code.append(_indent(") -> None:", 1))
     code.append(_indent("self._base_value = _base_value", 2))
 
     for unit, factor in units.items():
-        code.append(_indent(f"self._base_value += {unit} * {factor}", 2))
+        code.append(_indent(f"if {unit} is not None:", 2))
+        code.append(_indent(f"self._base_value += {unit} * {factor}", 3))
 
     code.append("")
     return code
