@@ -245,7 +245,7 @@ def test_sum__quantity():
 
 def test_from_numpy__quantity():
     array = np.array([0, 1, 2])
-    actual = Vector.from_numpy(array, Length, "meters")
+    actual = Vector[Length].from_numpy(array, Length, "meters")
     assert actual == Vector([Length(meters=0), Length(meters=1), Length(meters=2)])
 
 
