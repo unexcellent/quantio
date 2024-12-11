@@ -83,7 +83,7 @@ class Vector(Generic[T]):
 
     def to_numpy(self, unit: str | None = None) -> np.ndarray[float]:
         """Convert this vector into a numpy array of floats."""
-        if not isinstance(self.elements[0], Quantity):
+        if not isinstance(self[0], Quantity):
             return self._elements
 
         if unit is None:
@@ -92,7 +92,8 @@ class Vector(Generic[T]):
         if unit == self._quantitiy.BASE_UNIT:  # type: ignore
             return self._elements
 
-        return np.array([getattr(element, unit) for element in self.elements])
+        conversion_factor = getattr(self._quantitiy(1), unit)
+        return self._elements * conversion_factor
 
     def sum(self) -> T:
         """Return a sum of all elements of this array."""
