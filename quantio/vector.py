@@ -66,11 +66,9 @@ class Vector(Generic[T]):
         return Vector(np.tile(element, length))
 
     @classmethod
-    def from_numpy(
-        cls, array: np.ndarray, element_class: type[Quantity], unit: str
-    ) -> Vector[Quantity]:
+    def from_numpy(cls, array: np.ndarray, element_class: type[Quantity], unit: str) -> Vector[T]:
         """Construct a quantity vector from a numpy array."""
-        vector: Vector[Quantity] = Vector([0])
+        vector: Vector[T] = Vector([0])
 
         if unit == element_class.BASE_UNIT:
             vector._elements = array
@@ -119,15 +117,21 @@ class Vector(Generic[T]):
         """Add another vector to this one."""
         if not isinstance(other[0], self._quantitiy):
             raise CanNotAddTypesError(self[0].__class__.__name__, other[0].__class__.__name__)
-        other_elements = other.elements if isinstance(other, Vector) else np.array(other)
-        return Vector[T](self.elements + other_elements)
+        return Vector[T].from_numpy(
+            self._elements + other._elements,
+            self._quantitiy,
+            self._quantitiy.BASE_UNIT,  # type: ignore[attr-defined]
+        )
 
     def __sub__(self, other: Vector[T] | np.ndarray) -> Vector[T]:
         """Subtract another vector from this one."""
         if not isinstance(other[0], self._quantitiy):
             raise CanNotSubtractTypesError(self[0].__class__.__name__, other[0].__class__.__name__)
-        other_elements = other.elements if isinstance(other, Vector) else np.array(other)
-        return Vector[T](self.elements - other_elements)
+        return Vector[T].from_numpy(
+            self._elements - other._elements,
+            self._quantitiy,
+            self._quantitiy.BASE_UNIT,  # type: ignore[attr-defined]
+        )
 
     def __mul__(self, other: Vector | np.ndarray | float) -> np.ndarray:
         """Multiply this vector with either another vector or a scalar."""
